@@ -114,7 +114,7 @@
             // Apply Dynamic Colors
             if (data.apariencia) {
                 const root = document.documentElement;
-                if (data.apariencia.color_fondo) root.style.setProperty('--bg-color', data.apariencia.color_fondo);
+                if (data.apariencia.color_fondo_app) root.style.setProperty('--bg-color', data.apariencia.color_fondo_app);
                 if (data.apariencia.color_primario) {
                     root.style.setProperty('--accent-color', data.apariencia.color_primario);
                 }

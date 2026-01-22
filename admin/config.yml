@@ -22,7 +22,8 @@ collections:
             name: "apariencia"
             widget: "object"
             fields:
-              - { label: "Color de Fondo", name: "color_fondo", widget: "color", default: "#2d3436" }
+              - { label: "Color Fondo Admin", name: "color_fondo_admin", widget: "color", default: "#1e1e1e" }
+              - { label: "Color Fondo Web App", name: "color_fondo_app", widget: "color", default: "#2d3436" }
               - { label: "Color de Botones (Primario)", name: "color_primario", widget: "color", default: "#6c5ce7" }
               - { label: "Color de Texto", name: "color_texto", widget: "color", default: "#ffffff" }
           - label: "Servicios Ofrecidos"
