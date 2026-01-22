@@ -7,116 +7,112 @@
   <title>t-leva Admin</title>
   /* Import Corporate Font */
   <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+    /* Import Corporate Font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-    /* STRICT DARK MODE OVERRIDES - TOTAL BLACK */
+    /* --- BASE DEL MODO OSCURO --- */
     body,
     #nc-root {
       font-family: 'Inter', sans-serif !important;
       background-color: #1e1e1e !important;
-      color: white !important;
+      /* Fondo principal negro suave */
+      color: #dfe6e9 !important;
+      /* Texto base casi blanco */
     }
 
-    /* Force background on all main containers */
-    [class*="nc-"],
-    section,
-    div,
-    header,
-    main,
-    div[class*="App"],
-    div[class*="Collection"] {
-      background-color: #1e1e1e !important;
+    /* --- ARREGLO DE TÍTULOS Y CABECERAS (CRÍTICO) --- */
+    /* Cabeceras principales de colección */
+    [class*="CollectionHeader"],
+    [class*="AppHeader"] {
+      background-color: #2d3436 !important;
+      border-bottom: 2px solid #6c5ce7 !important;
     }
 
-    /* Target inputs and text areas specifically */
+    [class*="CollectionHeader"] h1,
+    [class*="AppHeader"] h1,
+    [class*="CollectionHeader"] span {
+      color: #ffffff !important;
+      /* Títulos principales BLANCOS */
+    }
+
+    /* Barras de título de sección (ej: "LOGO DE LA EMPRESA") */
+    [class*="ObjectWidgetTopBar"],
+    [class*="EditorControlGroupHeader"] {
+      background-color: #6c5ce7 !important;
+      /* Fondo morado corporativo */
+      color: #ffffff !important;
+      /* Texto BLANCO */
+      border: none !important;
+      border-radius: 8px 8px 0 0 !important;
+    }
+
+    /* --- ARREGLO DE ETIQUETAS (LABELS) --- */
+    label,
+    [class*="WidgetLabel"],
+    [class*="ControlLabel"] {
+      color: #ffffff !important;
+      /* Etiquetas BLANCAS y legibles */
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      margin-bottom: 8px !important;
+    }
+
+    /* --- LIMPIEZA DE INPUTS Y CAMPOS --- */
     input,
     textarea,
-    div[role="group"],
-    [class*="Control"] {
+    select,
+    div[role="textbox"] {
       background-color: #2d3436 !important;
+      /* Fondo de input oscuro */
       color: #ffffff !important;
-      border: 1px solid #6c5ce7 !important;
+      /* Texto que escribes BLANCO */
+      border: 1px solid #636e72 !important;
+      border-radius: 6px !important;
+      padding: 10px !important;
     }
 
-    /* Force Text Colors */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    label,
-    span,
-    p,
-    a {
-      color: #ffffff !important;
-    }
-
-    /* Buttons */
-    button,
-    [class*="Button"] {
-      background-color: #6c5ce7 !important;
-      color: white !important;
-      fill: white !important;
+    /* Eliminar cajas de fondo blancas residuales */
+    [class*="EditorControl"] {
+      background-color: transparent !important;
       border: none !important;
+      box-shadow: none !important;
+      margin-bottom: 24px !important;
     }
 
-    /* Sidebar specifics */
-    aside,
-    [class*="Sidebar"] {
-      background-color: #1a1a1a !important;
-      border-right: 1px solid #2d2d2d !important;
+    /* Contenedores de objetos */
+    [class*="ObjectWidget"] {
+      border: 1px solid #636e72 !important;
+      border-radius: 8px !important;
+      padding: 0 !important;
+      /* El padding lo da la barra superior */
+      overflow: hidden;
     }
 
-    /* Active links in sidebar */
-    [class*="NavLinkActive"] {
-      background-color: rgba(108, 92, 231, 0.2) !important;
-      border-left: 3px solid #6c5ce7 !important;
-    }
-
-    /* Fix white patches behind color pickers or widgets */
-    div[class*="Widget"] {
-      background: transparent !important;
-    }
-
-    /* ------------------------------
-       BACK BUTTON - CONTROL STYLE
-       ------------------------------ */
-    .back-btn {
+    /* --- BOTÓN "VOLVER" --- */
+    .back-btn-fixed {
       position: fixed;
       top: 15px;
       right: 20px;
       z-index: 99999;
-
-      background-color: #1e1e1e;
+      background: #2d3436;
       border: 2px solid #6c5ce7;
-      border-radius: 8px;
-
       color: white;
-      padding: 10px 20px;
+      padding: 8px 16px;
+      border-radius: 8px;
       text-decoration: none;
-      font-weight: 700;
-      font-family: 'Inter', sans-serif;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .back-btn:hover {
-      background-color: #6c5ce7;
-      box-shadow: 0 6px 15px rgba(108, 92, 231, 0.4);
+    .back-btn-fixed:hover {
+      background: #6c5ce7;
       transform: translateY(-2px);
     }
   </style>
 
 <body>
-  <a href="/" class="back-btn">⬅ Volver a la Encuesta</a>
+  <a href="/" class="back-btn-fixed">⬅ Volver a la Encuesta</a>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
