@@ -5,83 +5,91 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>t-leva Admin</title>
-  <style>
-    /* Force Dark Mode for Decap CMS */
-    body,
-    #nc-root {
-      background-color: #2d3436 !important;
-      color: white !important;
-    }
+  /* Import Corporate Font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-    div[class*="AppContainer"] {
-      background-color: #2d3436 !important;
-    }
+  /* STRICT DARK MODE OVERRIDES */
+  body, #nc-root {
+  font-family: 'Inter', sans-serif !important;
+  background-color: #2d3436 !important;
+  color: white !important;
+  }
 
-    /* Headers and Texts */
-    h1,
-    h2,
-    h3,
-    h4,
-    span,
-    label {
-      color: #dfe6e9 !important;
-    }
+  /* Force background on all main containers */
+  [class*="nc-"], section, div, header, main {
+  background-color: #2d3436 !important;
+  }
 
-    /* Buttons - Accent Color */
-    button[class*="Button"],
-    a[class*="Button"] {
-      background-color: #6c5ce7 !important;
-      color: white !important;
-      border: none !important;
-    }
+  /* Target inputs and text areas specifically */
+  input, textarea, div[role="group"], [class*="Control"] {
+  background-color: #636e72 !important;
+  color: #ffffff !important;
+  border: 1px solid #b2bec3 !important;
+  }
 
-    /* Sidebar */
-    div[class*="Sidebar"] {
-      background-color: #353b48 !important;
-      border-right: 1px solid #636e72 !important;
-    }
+  /* Force Text Colors */
+  h1, h2, h3, h4, h5, h6, label, span, p, a {
+  color: #ffffff !important;
+  }
 
-    a[class*="NavLink"] {
-      color: #b2bec3 !important;
-    }
+  /* Buttons */
+  button, [class*="Button"] {
+  background-color: #6c5ce7 !important;
+  color: white !important;
+  fill: white !important;
+  }
 
-    a[class*="NavLinkActive"] {
-      color: #6c5ce7 !important;
-      background-color: rgba(108, 92, 231, 0.1) !important;
-    }
+  /* Sidebar specifics */
+  aside, [class*="Sidebar"] {
+  background-color: #2d3436 !important;
+  border-right: 1px solid #636e72 !important;
+  }
 
-    /* Inputs */
-    input,
-    textarea,
-    div[class*="Control"] {
-      background-color: #636e72 !important;
-      color: white !important;
-      border-color: #b2bec3 !important;
-    }
+  /* Active links in sidebar */
+  [class*="NavLinkActive"] {
+  background-color: rgba(108, 92, 231, 0.2) !important;
+  border-left: 3px solid #6c5ce7 !important;
+  }
 
+  /* Fix white patches behind color pickers or widgets */
+  div[class*="Widget"] {
+  background: transparent !important;
+  }
 
+  /* ------------------------------
+  BACK BUTTON - CONTROL STYLE
+  ------------------------------ */
+  .back-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px; /* Top Right as requested */
+  z-index: 99999;
 
-    /* Back Button */
-    .back-btn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 9999;
-      background-color: rgba(108, 92, 231, 0.8) !important;
-      color: white !important;
-      padding: 10px 15px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-family: sans-serif;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s;
-    }
+  background-color: #2d3436 !important;
+  border: 2px solid #6c5ce7 !important;
+  border-radius: 8px;
 
-    .back-btn:hover {
-      background-color: #6c5ce7 !important;
-    }
-  </style>
+  color: white !important;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  }
+
+  .back-btn:hover {
+  background-color: #6c5ce7 !important;
+  box-shadow: 0 6px 15px rgba(108, 92, 231, 0.4);
+  transform: translateY(-2px);
+  }
 </head>
 
 <body>
