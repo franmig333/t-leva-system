@@ -1,0 +1,36 @@
+{
+  "logo_imagen": "",
+  "title": "Inicia tu Proyecto",
+  "subtitle": "Selecciona los servicios que necesitas",
+  "services": [
+    {
+      "name": "Web",
+      "id": "web"
+    },
+    {
+      "name": "Logo",
+      "id": "logo"
+    },
+    {
+      "name": "Bio",
+      "id": "bio"
+    }
+  ],
+  "questions": [
+    {
+      "label": "¿Cómo se llama tu empresa?",
+      "type": "text",
+      "name": "company_name"
+    },
+    {
+      "label": "Describe tu visión en pocas palabras",
+      "type": "textarea",
+      "name": "vision"
+    },
+    {
+      "label": "¿Correo de contacto?",
+      "type": "email",
+      "name": "email"
+    }
+  ]
+}

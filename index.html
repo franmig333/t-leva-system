@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>t-leva App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+
+    <div class="container" id="app">
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar-bg">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="step-indicator">
+                <span id="step1Label" style="color: var(--text-color)">Servicios</span>
+                <span id="step2Label">Detalles</span>
+            </div>
+        </div>
+
+        <header id="header">
+            <!-- Dynamic Content -->
+        </header>
+
+        <form name="t-leva-app" method="POST" data-netlify="true" id="wizardForm">
+            <input type="hidden" name="form-name" value="t-leva-app" />
+            <input type="hidden" name="selected_services" id="selectedServicesInput">
+
+            <!-- STEP 1: Services -->
+            <div class="wizard-step active" id="step1">
+                <div id="services-container" class="services-grid">
+                    <!-- Loading Skeleton -->
+                    <div style="grid-column: 1/-1; text-align: center; padding: 20px;">Cargando servicios...</div>
+                </div>
+                <div class="error-msg" id="serviceError">Por favor selecciona al menos un servicio.</div>
+                <button type="button" class="action-btn" onclick="nextStep()">Continuar</button>
+            </div>
+
+            <!-- STEP 2: Questions -->
+            <div class="wizard-step" id="step2">
+                <div id="questions-container">
+                    <!-- Dynamic Questions -->
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 2rem;">
+                    <button type="button" class="action-btn"
+                        style="background-color: transparent; border: 1px solid var(--input-bg); color: #b2bec3;"
+                        onclick="prevStep()">Atrás</button>
+                    <button type="submit" class="action-btn" id="submitBtn">Enviar Solicitud</button>
+                </div>
+            </div>
+        </form>
+
+        <a href="/admin/" class="admin-link">🔒 Acceso Administrador</a>
+    </div>
+
+    <!-- Configurado para el usuario franmig33 -->
+    <script>
+        let currentStep = 1;
+        const totalSteps = 2;
+        const selectedServices = new Set();
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            updateProgress();
+
+            const form = document.getElementById('wizardForm');
+            form.addEventListener('submit', () => {
+                const btn = document.getElementById('submitBtn');
+                btn.innerText = "Procesando...";
+                btn.disabled = true;
+            });
+
+            // Redirect to admin if login happens on this page
+            if (window.netlifyIdentity) {
+                window.netlifyIdentity.on("init", user => {
+                    if (!user) {
+                        window.netlifyIdentity.on("login", () => {
+                            document.location.href = "/admin/";
+                        });
+                    }
+                });
+            }
+
+            try {
+                const response = await fetch('/_data/config.json');
+                if (!response.ok) throw new Error('Error fetching config');
+                const data = await response.json();
+                renderApp(data);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('header').innerHTML = '<h2>Error de conexión</h2>';
+            }
+        });
+
+        function renderApp(data) {
+            // Header
+            // Header
+            let logoHtml = '';
+            if (data.logo_imagen) {
+                logoHtml = `<img id="dynamic-logo" class="app-logo" src="${data.logo_imagen}" alt="Logo Empresa" />`;
+            }
+
+            document.getElementById('header').innerHTML = `
+                ${logoHtml}
+                <h1>${data.title}</h1>
+                <p class="subtitle">${data.subtitle}</p>
+            `;
+
+            // Services
+            const servicesContainer = document.getElementById('services-container');
+            servicesContainer.innerHTML = ''; // Clear skeleton
+
+            if (data.services) {
+                data.services.forEach(service => {
+                    const btn = document.createElement('div');
+                    btn.className = 'service-card';
+                    btn.textContent = service.name;
+                    btn.onclick = () => toggleService(btn, service.name);
+                    servicesContainer.appendChild(btn);
+                });
+            }
+
+            // Questions
+            const questionsContainer = document.getElementById('questions-container');
+            if (data.questions) {
+                let html = '';
+                data.questions.forEach(q => {
+                    const id = q.name || q.label.toLowerCase().replace(/\s+/g, '-');
+                    html += `<div class="form-group">
+                        <label for="${id}">${q.label}</label>
+                        ${q.type === 'textarea'
+                            ? `<textarea id="${id}" name="${id}" rows="4" required></textarea>`
+                            : `<input type="${q.type}" id="${id}" name="${id}" required>`}
+                    </div>`;
+                });
+                questionsContainer.innerHTML = html;
+            }
+        }
+
+        function toggleService(element, name) {
+            element.classList.toggle('selected');
+            if (selectedServices.has(name)) {
+                selectedServices.delete(name);
+            } else {
+                selectedServices.add(name);
+            }
+            document.getElementById('selectedServicesInput').value = Array.from(selectedServices).join(', ');
+
+            // Hide error if visible
+            if (selectedServices.size > 0) {
+                document.getElementById('serviceError').style.display = 'none';
+            }
+        }
+
+        window.nextStep = function () {
+            if (currentStep === 1) {
+                if (selectedServices.size === 0) {
+                    document.getElementById('serviceError').style.display = 'block';
+                    // Shake animation effect
+                    const btn = document.querySelector('#step1 .action-btn');
+                    btn.style.transform = 'translateX(5px)';
+                    setTimeout(() => btn.style.transform = 'translateX(0)', 100);
+                    return;
+                }
+            }
+
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+            }
+        };
+
+        window.prevStep = function () {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+            }
+        };
+
+        function updateProgress() {
+            const percent = ((currentStep - 1) / (totalSteps - 1)) * 100; // 0% or 100% since 2 steps
+            // But visual preference usually starts at 50% for step 1? 
+            // Let's make Step 1 = 50%, Step 2 = 100% for better visual feedback
+            const visualPercent = (currentStep / totalSteps) * 100;
+
+            document.getElementById('progressBar').style.width = `${visualPercent}%`;
+
+            // Update labels styles
+            if (currentStep === 2) {
+                document.getElementById('step2Label').style.color = 'var(--text-color)';
+            } else {
+                document.getElementById('step2Label').style.color = '#b2bec3';
+            }
+        }
+    </script>
+</body>
+
+</html>

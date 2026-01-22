@@ -1,0 +1,284 @@
+:root {
+    --bg-color: #2d3436;
+    --text-color: #ffffff;
+    --accent-color: #6c5ce7;
+    --accent-hover: #5b4cc4;
+    --secondary-bg: #353b48;
+    --input-bg: #636e72;
+    --success-color: #00cec9;
+    --border-radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container Layout - Mobile First Default */
+.container {
+    width: 95%;
+    /* Mobile Requirement */
+    max-width: 600px;
+    padding: 20px 10px;
+    /* Slight side padding */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 0 5px;
+}
+
+.progress-bar-bg {
+    background-color: var(--secondary-bg);
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--accent-color);
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    /* 16px+ encouraged */
+    color: #b2bec3;
+    font-weight: 500;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #b2bec3;
+    font-size: 1.1rem;
+}
+
+/* Wizard Sections */
+.wizard-step {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+/* Services Grid - Mobile First (Stacked) */
+.services-grid {
+    display: grid;
+    gap: 15px;
+    width: 100%;
+    grid-template-columns: 1fr;
+    /* Stacked by default */
+}
+
+.service-card {
+    background-color: var(--secondary-bg);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+    min-height: 80px;
+    user-select: none;
+}
+
+.service-card:active {
+    transform: scale(0.96);
+}
+
+.service-card.selected {
+    border-color: var(--accent-color);
+    background-color: rgba(108, 92, 231, 0.15);
+    color: white;
+    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+}
+
+/* Inputs */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    /* Readable on mobile */
+    color: #dfe6e9;
+    font-weight: 500;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 16px;
+    /* Touch friendly */
+    background-color: var(--secondary-bg);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    /* Prevents zoom on iOS */
+    transition: border-color 0.3s;
+    appearance: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Buttons */
+.action-btn {
+    width: 100%;
+    padding: 0;
+    min-height: 50px;
+    /* Touch Target 50px+ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+.action-btn:disabled {
+    background-color: var(--input-bg);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.app-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.admin-link {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    /* Extra spacing for mobile bars */
+    padding-bottom: 20px;
+    font-size: 0.85rem;
+    color: #636e72;
+    opacity: 0.4;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.admin-link:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.error-msg {
+    color: #ff7675;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Desktop Adjustments */
+@media (min-width: 601px) {
+    .container {
+        min-height: auto;
+        padding: 40px;
+        background-color: rgba(45, 52, 54, 0.5);
+        border-radius: 20px;
+        /* Width is already handled by max-width: 600px */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* Row on desktop */
+    }
+
+    .service-card {
+        aspect-ratio: 1;
+        flex-direction: column;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+}

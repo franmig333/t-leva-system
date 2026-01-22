@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>t-leva Admin</title>
+  <style>
+    /* Force Dark Mode for Decap CMS */
+    body,
+    #nc-root {
+      background-color: #2d3436 !important;
+      color: white !important;
+    }
+
+    div[class*="AppContainer"] {
+      background-color: #2d3436 !important;
+    }
+
+    /* Headers and Texts */
+    h1,
+    h2,
+    h3,
+    h4,
+    span,
+    label {
+      color: #dfe6e9 !important;
+    }
+
+    /* Buttons - Accent Color */
+    button[class*="Button"],
+    a[class*="Button"] {
+      background-color: #6c5ce7 !important;
+      color: white !important;
+      border: none !important;
+    }
+
+    /* Sidebar */
+    div[class*="Sidebar"] {
+      background-color: #353b48 !important;
+      border-right: 1px solid #636e72 !important;
+    }
+
+    a[class*="NavLink"] {
+      color: #b2bec3 !important;
+    }
+
+    a[class*="NavLinkActive"] {
+      color: #6c5ce7 !important;
+      background-color: rgba(108, 92, 231, 0.1) !important;
+    }
+
+    /* Inputs */
+    input,
+    textarea,
+    div[class*="Control"] {
+      background-color: #636e72 !important;
+      color: white !important;
+      border-color: #b2bec3 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Include the script that builds the page and powers Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Netlify Identity Widget (Used by Decap CMS)
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.reload();
+          });
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: 'es'
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "config"
+    label: "Configuración"
+    files:
+      - name: "general"
+        label: "Ajustes de la App"
+        file: "_data/config.json"
+        fields:
+          - { label: "Logo de la Empresa", name: "logo_imagen", widget: "image" }
+          - { label: "Título Principal", name: "title", widget: "string" }
+          - { label: "Subtítulo", name: "subtitle", widget: "string" }
+          - label: "Servicios Ofrecidos"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Nombre del Servicio", name: "name", widget: "string" }
+              - { label: "ID (único)", name: "id", widget: "string" }
+          - label: "Preguntas del Formulario"
+            name: "questions"
+            widget: "list"
+            fields:
+              - { label: "Texto de la Pregunta", name: "label", widget: "string" }
+              - { label: "Nombre del Campo (name)", name: "name", widget: "string" }
+              - { label: "Tipo de Input", name: "type", widget: "select", options: ["text", "textarea", "email", "number"] }
