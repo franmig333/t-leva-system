@@ -58,12 +58,39 @@
       color: white !important;
       border-color: #b2bec3 !important;
     }
+
+
+
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      background-color: rgba(108, 92, 231, 0.8) !important;
+      color: white !important;
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: sans-serif;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #6c5ce7 !important;
+    }
   </style>
 </head>
 
 <body>
+  <a href="/" class="back-btn">⬅ Volver a la Encuesta</a>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    CMS.registerPreviewStyle("style.css");
+  </script>
   <script>
     // Netlify Identity Widget (Used by Decap CMS)
     if (window.netlifyIdentity) {

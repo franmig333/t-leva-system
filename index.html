@@ -111,6 +111,16 @@
                 <p class="subtitle">${data.subtitle}</p>
             `;
 
+            // Apply Dynamic Colors
+            if (data.apariencia) {
+                const root = document.documentElement;
+                if (data.apariencia.color_fondo) root.style.setProperty('--bg-color', data.apariencia.color_fondo);
+                if (data.apariencia.color_primario) {
+                    root.style.setProperty('--accent-color', data.apariencia.color_primario);
+                }
+                if (data.apariencia.color_texto) root.style.setProperty('--text-color', data.apariencia.color_texto);
+            }
+
             // Services
             const servicesContainer = document.getElementById('services-container');
             servicesContainer.innerHTML = ''; // Clear skeleton

@@ -2,6 +2,11 @@
   "logo_imagen": "",
   "title": "Inicia tu Proyecto",
   "subtitle": "Selecciona los servicios que necesitas",
+  "apariencia": {
+    "color_fondo": "#2d3436",
+    "color_primario": "#6c5ce7",
+    "color_texto": "#ffffff"
+  },
   "services": [
     {
       "name": "Web",
