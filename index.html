@@ -27,7 +27,7 @@
             <!-- Dynamic Content -->
         </header>
 
-        <form name="t-leva-app" method="POST" data-netlify="true" id="wizardForm">
+        <form name="t-leva-app" method="POST" data-netlify="true" id="wizardForm" enctype="multipart/form-data">
             <input type="hidden" name="form-name" value="t-leva-app" />
             <input type="hidden" name="selected_services" id="selectedServicesInput">
 
@@ -44,7 +44,11 @@
             <!-- STEP 2: Questions -->
             <div class="wizard-step" id="step2">
                 <div id="questions-container">
-                    <!-- Dynamic Questions -->
+                    <!-- Dynamic Questions from Config -->
+                </div>
+
+                <div id="service-specific-container" style="margin-top: 2rem;">
+                    <!-- Dynamic Service Questions (Injected via JS) -->
                 </div>
 
                 <div style="display: flex; gap: 10px; margin-top: 2rem;">
@@ -182,10 +186,109 @@
             if (currentStep < totalSteps) {
                 document.getElementById(`step${currentStep}`).classList.remove('active');
                 currentStep++;
+
+                // Logic to inject specific service questions before showing step 2
+                if (currentStep === 2) {
+                    injectServiceQuestions();
+                }
+
                 document.getElementById(`step${currentStep}`).classList.add('active');
                 updateProgress();
             }
         };
+
+        function injectServiceQuestions() {
+            const container = document.getElementById('service-specific-container');
+            container.innerHTML = ''; // Clear previous
+
+            // Check for specific services and append HTML
+            if (selectedServices.has('Logo')) {
+                container.innerHTML += `
+                    <div class="service-section fade-in">
+                        <h3 class="section-title">🎨 Personalización de Logo</h3>
+                        <div class="form-group">
+                            <label>Colores de Preferencia</label>
+                            <input type="text" name="logo_colors" placeholder="Ej: Azul y Dorado, o #FF0000">
+                        </div>
+                        <div class="form-group">
+                            <label>¿Qué transmite tu marca?</label>
+                            <div class="select-wrapper">
+                                <select name="logo_vibe">
+                                    <option value="Elegante">Elegante</option>
+                                    <option value="Divertido">Divertido</option>
+                                    <option value="Minimalista">Minimalista</option>
+                                    <option value="Lujoso">Lujoso</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Sube referentes o tu logo actual</label>
+                            <label class="file-upload-wrapper">
+                                <input type="file" name="logo_ref" multiple>
+                                <span>📂 Elegir archivos...</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (selectedServices.has('Web')) {
+                container.innerHTML += `
+                    <div class="service-section fade-in">
+                        <h3 class="section-title">🌐 Detalles Web</h3>
+                        <div class="form-group">
+                            <label>¿Tienes Dominio?</label>
+                            <div class="select-wrapper">
+                                <select name="web_has_domain">
+                                    <option value="Si">Sí</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Redes Sociales Principales</label>
+                            <input type="text" name="web_socials" placeholder="Pega los links aquí">
+                        </div>
+                        <div class="form-group">
+                            <label>Objetivo de la web</label>
+                            <div class="select-wrapper">
+                                <select name="web_goal">
+                                    <option value="Ventas">Ventas</option>
+                                    <option value="Reservas">Reservas</option>
+                                    <option value="Portafolio">Portafolio</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Imágenes para la web</label>
+                            <label class="file-upload-wrapper">
+                                <input type="file" name="web_images" multiple>
+                                <span>📷 Elegir imágenes...</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (selectedServices.has('Bio')) {
+                container.innerHTML += `
+                    <div class="service-section fade-in">
+                        <h3 class="section-title">🔗 Bio Site</h3>
+                        <div class="form-group">
+                            <label>Links prioritarios</label>
+                            <textarea name="bio_links" rows="3" placeholder="WhatsApp, Ubicación, Catálogo..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Foto de Perfil</label>
+                            <label class="file-upload-wrapper">
+                                <input type="file" name="bio_photo">
+                                <span>👤 Subir Foto...</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }
+        }
 
         window.prevStep = function () {
             if (currentStep > 1) {

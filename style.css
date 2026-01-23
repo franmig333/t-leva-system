@@ -230,6 +230,69 @@ select:focus {
     color: var(--accent-color);
 }
 
+/* --- Advanced Form Styles --- */
+
+/* File Input Custom Styling */
+.file-upload-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+    background-color: var(--secondary-bg);
+    border: 2px dashed #b2bec3;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: #dfe6e9;
+}
+
+.file-upload-wrapper:hover {
+    border-color: var(--accent-color);
+    background-color: rgba(108, 92, 231, 0.1);
+}
+
+.file-upload-wrapper input[type="file"] {
+    display: none;
+    /* Hide default ugly input */
+}
+
+/* Service Sections */
+.service-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Select Styling Wrapper */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
 .error-msg {
     color: #ff7675;
     font-size: 0.9rem;
