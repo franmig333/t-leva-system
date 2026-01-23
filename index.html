@@ -27,8 +27,8 @@
             <!-- Dynamic Content -->
         </header>
 
-        <form name="t-leva-app" method="POST" data-netlify="true" id="wizardForm" enctype="multipart/form-data">
-            <input type="hidden" name="form-name" value="t-leva-app" />
+        <form name="pedidos_t_leva" method="POST" data-netlify="true" id="wizardForm" enctype="multipart/form-data">
+            <input type="hidden" name="form-name" value="pedidos_t_leva" />
             <input type="hidden" name="selected_services" id="selectedServicesInput">
 
             <!-- STEP 1: Services -->
@@ -359,8 +359,11 @@
                 }
 
                 // 3. Redirect
-                const WA_NUMBER = window.appConfig?.contacto?.whatsapp_number || "593999999999";
-                window.location.href = `https://wa.me/${WA_NUMBER}?text=${message}`;
+                const WA_NUMBER = "593984083776";
+                window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, '_blank');
+
+                // Reset button or form if needed, but we are opening a new tab
+                btn.innerText = "Enviado";
 
             } catch (error) {
                 console.error(error);
