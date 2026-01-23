@@ -8,6 +8,9 @@
     "color_primario": "#6c5ce7",
     "color_texto": "#ffffff"
   },
+  "contacto": {
+    "whatsapp_number": "593999999999"
+  },
   "services": [
     {
       "name": "Web",

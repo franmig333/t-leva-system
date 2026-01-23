@@ -26,6 +26,11 @@ collections:
               - { label: "Color Fondo Web App", name: "color_fondo_app", widget: "color", default: "#2d3436" }
               - { label: "Color de Botones (Primario)", name: "color_primario", widget: "color", default: "#6c5ce7" }
               - { label: "Color de Texto", name: "color_texto", widget: "color", default: "#ffffff" }
+          - label: "Datos de Contacto"
+            name: "contacto"
+            widget: "object"
+            fields:
+              - { label: "WhatsApp (sin +)", name: "whatsapp_number", widget: "string", default: "593999999999" }
           - label: "Servicios Ofrecidos"
             name: "services"
             widget: "list"

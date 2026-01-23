@@ -48,7 +48,87 @@
                 </div>
 
                 <div id="service-specific-container" style="margin-top: 2rem;">
-                    <!-- Dynamic Service Questions (Injected via JS) -->
+                    <!-- Static Hidden Sections -->
+
+                    <!-- LOGO BLOCK -->
+                    <div id="details-logo" class="service-section hidden">
+                        <h3 class="section-title">🎨 Personalización de Logo</h3>
+                        <div class="form-group">
+                            <label>¿Qué estilo buscas?</label>
+                            <div class="select-wrapper">
+                                <select name="logo_style" id="logo_style">
+                                    <option value="Minimalista">Minimalista</option>
+                                    <option value="Lujoso">Lujoso</option>
+                                    <option value="Divertido">Divertido</option>
+                                    <option value="Geométrico">Geométrico</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Colores de preferencia</label>
+                            <input type="text" name="logo_colors" id="logo_colors" placeholder="Ej: Azul y Dorado">
+                        </div>
+                        <div class="form-group">
+                            <label>Sube referentes visuales</label>
+                            <label class="file-upload-wrapper">
+                                <input type="file" name="logo_files" multiple>
+                                <span>📂 Arrastra o clic aquí</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- WEB BLOCK -->
+                    <div id="details-web" class="service-section hidden">
+                        <h3 class="section-title">🌐 Detalles Web</h3>
+                        <div class="form-group">
+                            <label>¿Tienes dominio comprado?</label>
+                            <div class="select-wrapper">
+                                <select name="web_domain" id="web_domain">
+                                    <option value="Si">Sí</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Objetivo de la web</label>
+                            <div class="select-wrapper">
+                                <select name="web_goal" id="web_goal">
+                                    <option value="Reservas/Citas">Reservas/Citas</option>
+                                    <option value="Ventas Online">Ventas Online</option>
+                                    <option value="Solo Información">Solo Información</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Redes Sociales actuales</label>
+                            <textarea name="web_socials" id="web_socials" rows="2"
+                                placeholder="Pega tus links aquí"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Sube fotos de tus productos/local</label>
+                            <label class="file-upload-wrapper">
+                                <input type="file" name="web_files" multiple>
+                                <span>📷 Arrastra o clic aquí</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- BIO BLOCK -->
+                    <div id="details-bio" class="service-section hidden">
+                        <h3 class="section-title">🔗 Bio Site</h3>
+                        <div class="form-group">
+                            <label>¿Qué enlaces quieres destacar?</label>
+                            <textarea name="bio_links" id="bio_links" rows="3"
+                                placeholder="WhatsApp, Dirección, Catálogo..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Foto de perfil</label>
+                            <label class="file-upload-wrapper">
+                                <input type="file" name="bio_profile_pic">
+                                <span>👤 Arrastra o clic aquí</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <div style="display: flex; gap: 10px; margin-top: 2rem;">
@@ -72,12 +152,11 @@
         document.addEventListener('DOMContentLoaded', async () => {
             updateProgress();
 
+            updateProgress();
+
             const form = document.getElementById('wizardForm');
-            form.addEventListener('submit', () => {
-                const btn = document.getElementById('submitBtn');
-                btn.innerText = "Procesando...";
-                btn.disabled = true;
-            });
+            form.addEventListener('submit', handleSubmit);
+
 
             // Redirect to admin if login happens on this page
             if (window.netlifyIdentity) {
@@ -95,6 +174,7 @@
                 if (!response.ok) throw new Error('Error fetching config');
                 const data = await response.json();
                 renderApp(data);
+                window.appConfig = data;
             } catch (error) {
                 console.error(error);
                 document.getElementById('header').innerHTML = '<h2>Error de conexión</h2>';
@@ -165,9 +245,42 @@
             }
             document.getElementById('selectedServicesInput').value = Array.from(selectedServices).join(', ');
 
-            // Hide error if visible
             if (selectedServices.size > 0) {
                 document.getElementById('serviceError').style.display = 'none';
+            }
+            // Trigger Conditional Logic
+            updateConditionals();
+        }
+
+        function updateConditionals() {
+            // Logo
+            const logoSection = document.getElementById('details-logo');
+            if (selectedServices.has('Logo')) {
+                logoSection.classList.remove('hidden');
+                document.getElementById('logo_colors').required = true;
+            } else {
+                logoSection.classList.add('hidden');
+                document.getElementById('logo_colors').required = false;
+            }
+
+            // Web
+            const webSection = document.getElementById('details-web');
+            if (selectedServices.has('Web')) {
+                webSection.classList.remove('hidden');
+                document.getElementById('web_socials').required = true;
+            } else {
+                webSection.classList.add('hidden');
+                document.getElementById('web_socials').required = false;
+            }
+
+            // Bio
+            const bioSection = document.getElementById('details-bio');
+            if (selectedServices.has('Bio')) {
+                bioSection.classList.remove('hidden');
+                document.getElementById('bio_links').required = true;
+            } else {
+                bioSection.classList.add('hidden');
+                document.getElementById('bio_links').required = false;
             }
         }
 
@@ -186,109 +299,10 @@
             if (currentStep < totalSteps) {
                 document.getElementById(`step${currentStep}`).classList.remove('active');
                 currentStep++;
-
-                // Logic to inject specific service questions before showing step 2
-                if (currentStep === 2) {
-                    injectServiceQuestions();
-                }
-
                 document.getElementById(`step${currentStep}`).classList.add('active');
                 updateProgress();
             }
         };
-
-        function injectServiceQuestions() {
-            const container = document.getElementById('service-specific-container');
-            container.innerHTML = ''; // Clear previous
-
-            // Check for specific services and append HTML
-            if (selectedServices.has('Logo')) {
-                container.innerHTML += `
-                    <div class="service-section fade-in">
-                        <h3 class="section-title">🎨 Personalización de Logo</h3>
-                        <div class="form-group">
-                            <label>Colores de Preferencia</label>
-                            <input type="text" name="logo_colors" placeholder="Ej: Azul y Dorado, o #FF0000">
-                        </div>
-                        <div class="form-group">
-                            <label>¿Qué transmite tu marca?</label>
-                            <div class="select-wrapper">
-                                <select name="logo_vibe">
-                                    <option value="Elegante">Elegante</option>
-                                    <option value="Divertido">Divertido</option>
-                                    <option value="Minimalista">Minimalista</option>
-                                    <option value="Lujoso">Lujoso</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Sube referentes o tu logo actual</label>
-                            <label class="file-upload-wrapper">
-                                <input type="file" name="logo_ref" multiple>
-                                <span>📂 Elegir archivos...</span>
-                            </label>
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (selectedServices.has('Web')) {
-                container.innerHTML += `
-                    <div class="service-section fade-in">
-                        <h3 class="section-title">🌐 Detalles Web</h3>
-                        <div class="form-group">
-                            <label>¿Tienes Dominio?</label>
-                            <div class="select-wrapper">
-                                <select name="web_has_domain">
-                                    <option value="Si">Sí</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Redes Sociales Principales</label>
-                            <input type="text" name="web_socials" placeholder="Pega los links aquí">
-                        </div>
-                        <div class="form-group">
-                            <label>Objetivo de la web</label>
-                            <div class="select-wrapper">
-                                <select name="web_goal">
-                                    <option value="Ventas">Ventas</option>
-                                    <option value="Reservas">Reservas</option>
-                                    <option value="Portafolio">Portafolio</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Imágenes para la web</label>
-                            <label class="file-upload-wrapper">
-                                <input type="file" name="web_images" multiple>
-                                <span>📷 Elegir imágenes...</span>
-                            </label>
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (selectedServices.has('Bio')) {
-                container.innerHTML += `
-                    <div class="service-section fade-in">
-                        <h3 class="section-title">🔗 Bio Site</h3>
-                        <div class="form-group">
-                            <label>Links prioritarios</label>
-                            <textarea name="bio_links" rows="3" placeholder="WhatsApp, Ubicación, Catálogo..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Foto de Perfil</label>
-                            <label class="file-upload-wrapper">
-                                <input type="file" name="bio_photo">
-                                <span>👤 Subir Foto...</span>
-                            </label>
-                        </div>
-                    </div>
-                `;
-            }
-        }
 
         window.prevStep = function () {
             if (currentStep > 1) {
@@ -298,6 +312,62 @@
                 updateProgress();
             }
         };
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "Procesando...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                // 1. Send to Netlify
+                await fetch('/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // 2. Build WhatsApp Message
+                const company = document.getElementById('company_name')?.value || "Cliente";
+                let message = `Hola T-Leva, soy ${company}.%0A%0A`;
+
+                if (selectedServices.has('Web')) {
+                    const goal = document.getElementById('web_goal').value;
+                    const domain = document.getElementById('web_domain').value;
+                    message += `🌐 WEB: Objetivo ${goal}, Dominio ${domain}.%0A`;
+                }
+
+                if (selectedServices.has('Logo')) {
+                    const style = document.getElementById('logo_style').value;
+                    const colors = document.getElementById('logo_colors').value;
+                    message += `🎨 LOGO: Estilo ${style}, Colores ${colors}.%0A`;
+                }
+
+                if (selectedServices.has('Bio')) {
+                    message += `🔗 BIO SITE solicitado.%0A`;
+                }
+
+                // Check for files
+                const hasFiles = (formData.get('logo_files') && formData.get('logo_files').size > 0) ||
+                    (formData.get('web_files') && formData.get('web_files').size > 0) ||
+                    (formData.get('bio_profile_pic') && formData.get('bio_profile_pic').size > 0);
+
+                if (hasFiles) {
+                    message += `%0A✅ He subido mis archivos de referencia en el formulario.`;
+                }
+
+                // 3. Redirect
+                const WA_NUMBER = window.appConfig?.contacto?.whatsapp_number || "593999999999";
+                window.location.href = `https://wa.me/${WA_NUMBER}?text=${message}`;
+
+            } catch (error) {
+                console.error(error);
+                btn.innerText = "Error - Intenta de nuevo";
+                btn.disabled = false;
+            }
+        }
 
         function updateProgress() {
             const percent = ((currentStep - 1) / (totalSteps - 1)) * 100; // 0% or 100% since 2 steps
