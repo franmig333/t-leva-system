@@ -39,8 +39,40 @@
             <input type="hidden" name="form-name" value="pedidos_t_leva" />
             <input type="hidden" name="selected_services" id="selectedServicesInput">
 
-            <!-- STEP 1: Services -->
+            <!-- STEP 0: Identity (Always Visible or Part of Step 1? Prompt says "Start or End". Let's put it at Start/Step 1 but before services) -->
+            <!-- Actually, let's make it part of Step 1 to keep flow simple but visually distinct at top -->
             <div class="wizard-step active" id="step1">
+
+                <!-- IDENTITY SECTION -->
+                <div class="service-section" style="margin-top: 0; margin-bottom: 2rem; border-top: none;">
+                    <h3 class="section-title">👤 Datos de la Empresa</h3>
+                    <div class="form-group">
+                        <label>¿Quién está llenando este formulario?</label>
+                        <input type="text" name="nombre_encuestado" placeholder="Tu nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Cuál es tu cargo?</label>
+                        <div class="select-wrapper">
+                            <select name="cargo_encuestado" required>
+                                <option value="" disabled selected>Selecciona tu cargo</option>
+                                <option value="Dueño/a">Dueño/a</option>
+                                <option value="Gerente">Gerente</option>
+                                <option value="Asistente">Asistente</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Nombre de tu Empresa/Emprendimiento</label>
+                        <input type="text" name="nombre_negocio" placeholder="Ej: T-Leva Agency" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" name="email_negocio" placeholder="contacto@tuempresa.com" required>
+                    </div>
+                </div>
+
+                <h3 class="section-title">🚀 Selecciona tus Servicios</h3>
                 <div id="services-container" class="services-grid">
                     <!-- Loading Skeleton -->
                     <div style="grid-column: 1/-1; text-align: center; padding: 20px;">Cargando servicios...</div>
@@ -121,6 +153,31 @@
                             </label>
                         </div>
                         <div class="form-group">
+                            <label>¿Qué elementos visuales te gustan?</label>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_elementos" value="Solo Tipografía"
+                                        style="width: auto; margin: 0;"> Solo Tipografía
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_elementos" value="Con Ícono/Dibujo"
+                                        style="width: auto; margin: 0;"> Con Ícono/Dibujo
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_elementos" value="Letras Entrelazadas"
+                                        style="width: auto; margin: 0;"> Letras Entrelazadas
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_elementos" value="Geométrico"
+                                        style="width: auto; margin: 0;"> Geométrico
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Cuéntanos la historia de tu marca o ideas adicionales</label>
                             <textarea name="logo_comentarios" rows="3"
                                 placeholder="Escribe aquí cualquier detalle extra..."></textarea>
@@ -139,6 +196,23 @@
                                     <option value="Si tengo todo">Sí, tengo todo</option>
                                     <option value="Solo Dominio">Solo tengo Dominio</option>
                                     <option value="No, necesito asesoria">No, necesito asesoría</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Si NO tienes dominio, escribe 2 o 3 opciones que te gustarían</label>
+                            <input type="text" name="web_domain_ideas" placeholder="Ej: misuñas.com, uñas-miami.com...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Qué plazo de entrega tienes en mente?</label>
+                            <div class="select-wrapper">
+                                <select name="web_deadline">
+                                    <option value="Lo más pronto posible">Lo más pronto posible</option>
+                                    <option value="En 15 días">En 15 días</option>
+                                    <option value="En 1 mes">En 1 mes</option>
+                                    <option value="Sin apuro">Sin apuro</option>
                                 </select>
                             </div>
                         </div>
@@ -274,6 +348,20 @@
         </form>
 
         <a href="/admin/" class="admin-link">🔒 Acceso Administrador</a>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal">
+        <div class="modal-content">
+            <span class="modal-icon">🎉</span>
+            <div class="modal-title">¡Solicitud Recibida!</div>
+            <div class="modal-text">Has tomado la mejor decisión para tu negocio. Has elegido a un excelente equipo de
+                trabajo para llevar tu proyecto al siguiente nivel.</div>
+            <div class="modal-subtext">
+                <div class="loader-spinner"></div>
+                Redirigiendo a WhatsApp en unos segundos...
+            </div>
+        </div>
     </div>
 
     <!-- Configurado para el usuario franmig33 -->
@@ -469,29 +557,37 @@
             btn.innerText = "Procesando...";
             btn.disabled = true;
 
+            // SHOW MODAL IMMEDIATELY
+            const modal = document.getElementById('successModal');
+            modal.style.display = 'flex';
+            // Slight delay to allow display flex to apply before adding class for opacity transition
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+
             const formData = new FormData(form);
 
             try {
-                // 1. Send to Netlify
-                await fetch('/', {
+                // 1. Send to Netlify (Background)
+                fetch('/', {
                     method: 'POST',
                     body: formData
-                });
+                }).catch(err => console.error("Netlify Save Error:", err)); // Log but don't stop flow
 
                 // 2. Build WhatsApp Message
-                const company = document.getElementById('company_name')?.value || "Cliente";
-                let message = `Hola T-Leva, soy ${company}.%0A%0A`;
+                const company = document.querySelector('input[name="nombre_negocio"]')?.value || document.getElementById('company_name')?.value || "Cliente";
+                const respondent = document.querySelector('input[name="nombre_encuestado"]')?.value || "";
+                let message = `Hola T-Leva, soy ${respondent} de ${company}.%0A%0A`;
+                message += `🚀 Solicitud de Proyecto:%0A`;
 
                 if (selectedServices.has('Web')) {
                     const goal = document.getElementById('web_goal').value;
-                    const domain = document.getElementById('web_domain').value;
-                    message += `🌐 WEB: Objetivo ${goal}, Dominio ${domain}.%0A`;
+                    message += `🌐 WEB: Objetivo ${goal}.%0A`;
                 }
 
                 if (selectedServices.has('Logo')) {
                     const style = document.getElementById('logo_style').value;
-                    const colors = document.getElementById('logo_colors').value;
-                    message += `🎨 LOGO: Estilo ${style}, Colores ${colors}.%0A`;
+                    message += `🎨 LOGO: Estilo ${style}.%0A`;
                 }
 
                 if (selectedServices.has('Bio')) {
@@ -507,15 +603,22 @@
                     message += `%0A✅ He subido mis archivos de referencia en el formulario.`;
                 }
 
-                // 3. Redirect
+                // 3. WAIT and Redirect
                 const WA_NUMBER = "593984083776";
-                window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, '_blank');
 
-                // Reset button or form if needed, but we are opening a new tab
-                btn.innerText = "Enviado";
+                setTimeout(() => {
+                    window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, '_blank');
+                    // Optional: Reset form or close modal after redirect?
+                    // For now, leave modal open as a success state
+                }, 3500);
 
             } catch (error) {
                 console.error(error);
+                // Hide modal if critical logic fails before the timeout set up? 
+                // Actually the fetch is async specific so we are mostly safe.
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+
                 btn.innerText = "Error - Intenta de nuevo";
                 btn.disabled = false;
             }
