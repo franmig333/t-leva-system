@@ -553,21 +553,26 @@
                 // 2. Build WhatsApp Message
                 const company = document.querySelector('input[name="nombre_negocio"]')?.value || document.getElementById('company_name')?.value || "Cliente";
                 const respondent = document.querySelector('input[name="nombre_encuestado"]')?.value || "";
-                let message = `Hola T-Leva, soy ${respondent} de ${company}.%0A%0A`;
+                const deadline = document.querySelector('select[name="project_deadline"]')?.value || "No especificado";
+
+                let message = `Hola T-Leva, soy ${respondent} de ${company}.%0A`;
+                message += `📅 Plazo: ${deadline}%0A%0A`;
                 message += `🚀 Solicitud de Proyecto:%0A`;
 
                 if (selectedServices.has('Web')) {
+                    const domain = document.querySelector('input[name="web_domain_preferences"]')?.value || "No definido";
                     const goal = document.getElementById('web_goal').value;
-                    message += `🌐 WEB: Objetivo ${goal}.%0A`;
+                    message += `🌐 WEB: Objetivo ${goal}. Dominio: ${domain}.%0A`;
                 }
 
                 if (selectedServices.has('Logo')) {
-                    const style = document.getElementById('logo_style').value;
-                    message += `🎨 LOGO: Estilo ${style}.%0A`;
+                    const audience = document.querySelector('select[name="logo_target_audience"]')?.value || "No especificado";
+                    message += `🎨 LOGO: Público ${audience}.%0A`;
                 }
 
                 if (selectedServices.has('Bio')) {
-                    message += `🔗 BIO SITE solicitado.%0A`;
+                    const bioObjective = document.querySelector('select[name="bio_main_objective"]')?.value || "";
+                    message += `🔗 BIO SITE: Objetivo ${bioObjective}.%0A`;
                 }
 
                 // Check for files
