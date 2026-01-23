@@ -2,6 +2,8 @@
   "logo_imagen": "/images/logo.png",
   "title": "Inicia tu Proyecto",
   "subtitle": "Selecciona los servicios que necesitas",
+  "mostrar_galeria": true,
+  "portafolio": [],
   "apariencia": {
     "color_fondo_admin": "#000000",
     "color_fondo_app": "#2d3436",

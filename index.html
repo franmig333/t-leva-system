@@ -27,6 +27,14 @@
             <!-- Dynamic Content -->
         </header>
 
+        <!-- Dynamic Portfolio Section -->
+        <section id="galeria-trabajos">
+            <h3 class="section-title" style="text-align: center; margin-bottom: 1rem;">Casos de Éxito</h3>
+            <div id="portfolio-grid">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
         <form name="pedidos_t_leva" method="POST" data-netlify="true" id="wizardForm" enctype="multipart/form-data">
             <input type="hidden" name="form-name" value="pedidos_t_leva" />
             <input type="hidden" name="selected_services" id="selectedServicesInput">
@@ -53,6 +61,21 @@
                     <!-- LOGO BLOCK -->
                     <div id="details-logo" class="service-section hidden">
                         <h3 class="section-title">🎨 Personalización de Logo</h3>
+                        <div class="form-group">
+                            <label>¿Cuál es la misión o vibra de tu negocio? <span class="info-icon"
+                                    data-tooltip="Ejemplo: Somos una marca que transmite paz, somos rebeldes, o somos corporativos y serios.">ℹ️</span></label>
+                            <input type="text" name="logo_mission"
+                                placeholder="Describe la personalidad de tu marca...">
+                        </div>
+                        <div class="form-group">
+                            <label>¿Qué colores odias o NUNCA usarías?</label>
+                            <input type="text" name="logo_hated_colors" placeholder="Ej: No usar Rojo ni Negro...">
+                        </div>
+                        <div class="form-group">
+                            <label>Público Objetivo (¿A quién le vendes?)</label>
+                            <input type="text" name="logo_target_audience"
+                                placeholder="Edad, género, gustos de tu cliente...">
+                        </div>
                         <div class="form-group">
                             <label>Personalidad de la marca</label>
                             <div class="select-wrapper">
@@ -97,11 +120,47 @@
                                 <span>📂 Arrastra o clic aquí</span>
                             </label>
                         </div>
+                        <div class="form-group">
+                            <label>Cuéntanos la historia de tu marca o ideas adicionales</label>
+                            <textarea name="logo_comentarios" rows="3"
+                                placeholder="Escribe aquí cualquier detalle extra..."></textarea>
+                        </div>
                     </div>
 
                     <!-- WEB BLOCK -->
                     <div id="details-web" class="service-section hidden">
                         <h3 class="section-title">🌐 Detalles Web</h3>
+
+                        <div class="form-group">
+                            <label>¿Tienes Dominio y Hosting? <span class="info-icon"
+                                    data-tooltip="Dominio es tu nombre en internet (ej: t-leva.com). Hosting es el espacio digital donde se guardan tus fotos.">ℹ️</span></label>
+                            <div class="select-wrapper">
+                                <select name="web_hosting_status">
+                                    <option value="Si tengo todo">Sí, tengo todo</option>
+                                    <option value="Solo Dominio">Solo tengo Dominio</option>
+                                    <option value="No, necesito asesoria">No, necesito asesoría</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Cuántas páginas/secciones imaginas?</label>
+                            <input type="text" name="web_pages_count"
+                                placeholder="Ej: Inicio, Nosotros, Servicios, Contacto (4)">
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Tienes el texto y las fotos listas?</label>
+                            <div class="select-wrapper">
+                                <select name="web_content_readiness">
+                                    <option value="Todo listo">Todo listo</option>
+                                    <option value="Tengo fotos pero no textos">Tengo fotos pero no textos</option>
+                                    <option value="Necesito que me ayuden con todo">Necesito que me ayuden con todo
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label>¿Qué funcionalidades especiales necesitas?</label>
                             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
@@ -128,21 +187,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Links de Competencia o Referencia</label>
-                            <input type="text" name="web_referencias" placeholder="¿Qué web te gusta? Pega links aquí">
-                        </div>
-                        <div class="form-group">
-                            <label>¿Quién es tu cliente ideal?</label>
-                            <input type="text" name="web_cliente_ideal" placeholder="Ej: Jóvenes de 18-25 años...">
-                        </div>
-                        <div class="form-group">
-                            <label>¿Tienes dominio comprado?</label>
-                            <div class="select-wrapper">
-                                <select name="web_domain" id="web_domain">
-                                    <option value="Si">Sí</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
+                            <label>Nombra 2 competidores a los que quieres superar</label>
+                            <input type="text" name="web_referencias"
+                                placeholder="Nombres o Links de tu competencia...">
                         </div>
                         <div class="form-group">
                             <label>Objetivo de la web</label>
@@ -166,6 +213,11 @@
                                 <span>📷 Arrastra o clic aquí</span>
                             </label>
                         </div>
+                        <div class="form-group">
+                            <label>Comentarios o ideas adicionales para tu Web</label>
+                            <textarea name="web_comentarios" rows="3"
+                                placeholder="Escribe aquí cualquier detalle extra..."></textarea>
+                        </div>
                     </div>
 
                     <!-- BIO BLOCK -->
@@ -182,6 +234,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>¿En qué red social eres más activo?</label>
+                            <div class="select-wrapper">
+                                <select name="bio_active_social">
+                                    <option value="Instagram">Instagram</option>
+                                    <option value="TikTok">TikTok</option>
+                                    <option value="Facebook">Facebook</option>
+                                    <option value="Otra">Otra</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>¿Qué enlaces quieres destacar?</label>
                             <textarea name="bio_links" id="bio_links" rows="3"
                                 placeholder="WhatsApp, Dirección, Catálogo..."></textarea>
@@ -192,6 +255,11 @@
                                 <input type="file" name="bio_profile_pic">
                                 <span>👤 Arrastra o clic aquí</span>
                             </label>
+                        </div>
+                        <div class="form-group">
+                            <label>Mensaje especial que quieras que vean al entrar</label>
+                            <textarea name="bio_comentarios" rows="2"
+                                placeholder="Ej: ¡Bienvenidos a mi mundo!"></textarea>
                         </div>
                     </div>
                 </div>
@@ -259,6 +327,22 @@
                 <h1>${data.title}</h1>
                 <p class="subtitle">${data.subtitle}</p>
             `;
+
+            // Portfolio Logic
+            const gallerySection = document.getElementById('galeria-trabajos');
+            const galleryGrid = document.getElementById('portfolio-grid');
+
+            if (data.mostrar_galeria === true && data.portafolio && data.portafolio.length > 0) {
+                gallerySection.style.display = 'block';
+                galleryGrid.innerHTML = data.portafolio.map(item => `
+                    <div class="portfolio-item">
+                        <img src="${item.imagen}" alt="${item.titulo || 'Proyecto'}">
+                        ${item.titulo ? `<div class="portfolio-title-overlay">${item.titulo}</div>` : ''}
+                    </div>
+                `).join('');
+            } else {
+                gallerySection.style.display = 'none';
+            }
 
             // Apply Dynamic Colors
             if (data.apariencia) {

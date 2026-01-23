@@ -18,6 +18,13 @@ collections:
           - { label: "Logo de la Empresa", name: "logo_imagen", widget: "image" }
           - { label: "Título Principal", name: "title", widget: "string" }
           - { label: "Subtítulo", name: "subtitle", widget: "string" }
+          - { label: "¿Mostrar sección de Portafolio en la web?", name: "mostrar_galeria", widget: "boolean", default: true }
+          - label: "Portafolio"
+            name: "portafolio"
+            widget: "list"
+            fields:
+              - { label: "Imagen", name: "imagen", widget: "image" }
+              - { label: "Título", name: "titulo", widget: "string" }
           - label: "Personalización Visual"
             name: "apariencia"
             widget: "object"
