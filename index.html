@@ -106,210 +106,433 @@
 
                     <!-- LOGO BLOCK -->
                     <div id="details-logo" class="service-section hidden">
-                        <h3 class="section-title">🎨 Personalización de Logo</h3>
+                        <h3 class="section-title">🎨 Personalización de Logo & Branding</h3>
 
-                        <div class="form-group">
-                            <label>¿A qué público te diriges? <span class="info-icon"
-                                    data-tooltip="El diseño cambia mucho si le vendes a adolescentes o a abogados corporativos.">ℹ️</span></label>
-                            <div class="select-wrapper">
-                                <select name="logo_target_audience" required>
-                                    <option value="Jóvenes">Jóvenes</option>
-                                    <option value="Empresas B2B">Empresas B2B</option>
-                                    <option value="Familias">Familias</option>
-                                    <option value="Lujo">Lujo</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
+                        <fieldset class="form-fieldset">
+                            <legend>Identidad & Nombre</legend>
+                            <div class="form-group">
+                                <label>¿Cuál es el nombre exacto de la marca? <span class="info-icon"
+                                        data-tooltip="Respeta mayúsculas y minúsculas exactas.">ℹ️</span></label>
+                                <input type="text" name="logo_exact_name" placeholder="Ej: Café Viena">
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label>¿Tiene Slogan o frase? <span class="info-icon"
+                                        data-tooltip="Ej: 'El mejor café'. A veces el slogan va debajo del logo.">ℹ️</span></label>
+                                <input type="text" name="logo_slogan" placeholder="Opcional">
+                            </div>
+                            <div class="form-group">
+                                <label>¿A qué se dedica el negocio en 1 sola frase? <span class="info-icon"
+                                        data-tooltip="Para entender el rubro a la perfección.">ℹ️</span></label>
+                                <input type="text" name="logo_description"
+                                    placeholder="Ej: Venta de ropa para bebés online">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Cuál es la historia detrás del nombre? <span class="info-icon"
+                                        data-tooltip="A veces la historia nos da pistas para dibujar un ícono oculto.">ℹ️</span></label>
+                                <textarea name="logo_namestory" rows="2" placeholder="Origen del nombre..."></textarea>
+                            </div>
+                        </fieldset>
 
-                        <div class="form-group">
-                            <label>¿Qué vibra quieres transmitir? <span class="info-icon"
-                                    data-tooltip="Ayúdanos a definir la personalidad de tu marca.">ℹ️</span></label>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_vibe" value="Elegante"
-                                        style="width: auto; margin: 0;"> Elegante
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_vibe" value="Divertida"
-                                        style="width: auto; margin: 0;"> Divertida
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_vibe" value="Minimalista"
-                                        style="width: auto; margin: 0;"> Minimalista
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_vibe" value="Ecológica"
-                                        style="width: auto; margin: 0;"> Ecológica
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_vibe" value="Futurista"
-                                        style="width: auto; margin: 0;"> Futurista
+                        <fieldset class="form-fieldset">
+                            <legend>Psicología & Personalidad</legend>
+                            <div class="form-group">
+                                <label>¿Qué 3 palabras describen la personalidad de tu marca? <span class="info-icon"
+                                        data-tooltip="Ej: Elegante, Divertida, Rápida, Tradicional, Tecnológica.">ℹ️</span></label>
+                                <input type="text" name="logo_personality_words"
+                                    placeholder="Palabra 1, Palabra 2, Palabra 3">
+                            </div>
+                            <div class="form-group">
+                                <label>Si tu marca fuera una persona famosa, ¿quién sería? <span class="info-icon"
+                                        data-tooltip="Una forma divertida de entender la personalidad: ¿Es como Steve Jobs o como Bad Bunny?">ℹ️</span></label>
+                                <input type="text" name="logo_celebrity" placeholder="Ej: Shakira (Alegre y global)">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Qué emoción quieres que sienta el cliente al ver el logo? <span
+                                        class="info-icon"
+                                        data-tooltip="Confianza, Hambre, Urgencia, Paz, Estatus.">ℹ️</span></label>
+                                <input type="text" name="logo_emotion" placeholder="Ej: Seguridad y Confianza">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Qué colores te representan? <span class="info-icon"
+                                        data-tooltip="Colores que sientes que van con la vibra del negocio.">ℹ️</span></label>
+                                <input type="text" name="logo_colors_like" placeholder="Ej: Azul marino y Oro">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Qué colores ODIAS o NUNCA usarías? <span class="info-icon"
+                                        data-tooltip="Vital para no perder tiempo con diseños que rechazarás.">ℹ️</span></label>
+                                <input type="text" name="logo_colors_hate" placeholder="Ej: Nada de rosado ni neón">
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="form-fieldset">
+                            <legend>Estética & Preferencias</legend>
+                            <div class="form-group">
+                                <label>¿Qué tipo de logo prefieres? <span class="info-icon"
+                                        data-tooltip="Solo letras, Letras + Ícono, o un Emblema/Escudo.">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="logo_type_pref">
+                                        <option value="Letras + Ícono (Imagotipo)">Letras + Ícono</option>
+                                        <option value="Solo Letras (Logotipo)">Solo Letras</option>
+                                        <option value="Emblema/Escudo">Emblema/Escudo</option>
+                                        <option value="No sé, propónganme">No sé, propónganme</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Hay algún símbolo que te gustaría incluir? <span class="info-icon"
+                                        data-tooltip="Ej: Unas tijeras, una corona, una letra específica.">ℹ️</span></label>
+                                <input type="text" name="logo_symbol_wish" placeholder="Me gustaría ver un león...">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Hay algún símbolo CLICHÉ que no quieres ver? <span class="info-icon"
+                                        data-tooltip="Ej: Si eres dentista, tal vez ya no quieres el típico dibujo del diente.">ℹ️</span></label>
+                                <input type="text" name="logo_cliche_avoid" placeholder="Evitar...">
+                            </div>
+                            <div class="form-group">
+                                <label>Nombra 3 marcas famosas cuya imagen te encante <span class="info-icon"
+                                        data-tooltip="Para entender tu estándar visual (Apple, Nike, CocaCola...).">ℹ️</span></label>
+                                <input type="text" name="logo_visual_benchmarks" placeholder="Marcas referentes...">
+                            </div>
+                            <div class="form-group">
+                                <label>Sube referencias visuales (Fotos) <span class="info-icon"
+                                        data-tooltip="Muéstranos fotos de logos que te gusten para afinar la puntería.">ℹ️</span></label>
+                                <label class="file-upload-wrapper">
+                                    <input type="file" name="logo_files" multiple>
+                                    <span>📂 Arrastra o clic aquí</span>
                                 </label>
                             </div>
-                        </div>
+                        </fieldset>
 
+                        <fieldset class="form-fieldset">
+                            <legend>Mercado & Entregables</legend>
+                            <div class="form-group">
+                                <label>¿A quién le vendes? (Público Objetivo) <span class="info-icon"
+                                        data-tooltip="Un logo para niños se diseña muy distinto a un logo para abogados.">ℹ️</span></label>
+                                <input type="text" name="logo_target"
+                                    placeholder="Edad, género, nivel socioeconómico...">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Dónde se usará más este logo? <span class="info-icon"
+                                        data-tooltip="Redes sociales, Letreros gigantes, Bordado en uniformes, Empaques.">ℹ️</span></label>
+                                <input type="text" name="logo_usage_primary" placeholder="Principalmente en...">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Tienen logos anteriores? <span class="info-icon"
+                                        data-tooltip="Para ver si hay que mantener la esencia o hacer un cambio radical.">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="logo_has_previous">
+                                        <option value="No, es nuevo">No, es nuevo</option>
+                                        <option value="Sí, pero quiero cambiar todo">Sí, pero quiero cambiar todo
+                                        </option>
+                                        <option value="Sí, quiero modernizarlo">Sí, quiero modernizarlo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Necesitas un Manual de Marca? <span class="info-icon"
+                                        data-tooltip="Un documento PDF que dice cómo usar el logo para que otros no lo deformen.">ℹ️</span></label>
+                                <div class="checkbox-wrapper">
+                                    <label><input type="checkbox" name="logo_deliverables" value="Manual de Marca"> Sí,
+                                        lo necesito</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Se necesita registrar legalmente? <span class="info-icon"
+                                        data-tooltip="Para asegurarnos de no usar elementos pre-fabricados.">ℹ️</span></label>
+                                <div class="checkbox-wrapper">
+                                    <label><input type="checkbox" name="logo_legal_reg" value="Sí"> Sí, voy a
+                                        registrarlo</label>
+                                </div>
+                            </div>
+                        </fieldset>
                         <div class="form-group">
-                            <label>¿Qué colores te gustan y cuáles ODIAS? <span class="info-icon"
-                                    data-tooltip="Evitaremos perder tiempo usando colores que no van con tus gustos.">ℹ️</span></label>
-                            <textarea name="logo_colors_preferences" rows="2"
-                                placeholder="Ej: Me gusta el azul, ODIO el naranja..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Sube referentes visuales</label>
-                            <label class="file-upload-wrapper">
-                                <input type="file" name="logo_files" multiple>
-                                <span>📂 Arrastra o clic aquí</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Cuéntanos la historia de tu marca o ideas adicionales</label>
-                            <textarea name="logo_comentarios" rows="3"
-                                placeholder="Escribe aquí cualquier detalle extra..."></textarea>
+                            <label>Comentarios adicionales</label>
+                            <textarea name="logo_comentarios" rows="3" placeholder="Algo más..."></textarea>
                         </div>
                     </div>
 
                     <!-- WEB BLOCK -->
                     <div id="details-web" class="service-section hidden">
-                        <h3 class="section-title">🌐 Detalles Web</h3>
+                        <h3 class="section-title">🌐 Detalles Web & Apps</h3>
 
-                        <div class="form-group">
-                            <label>¿Qué nombre de Dominio deseas? (MUY IMPORTANTE) <span class="info-icon"
-                                    data-tooltip="Es la dirección de tu web (ej: www.miempresa.com). Si ya tienes uno, ponlo aquí. Si no, pon 2 opciones que te gusten.">ℹ️</span></label>
-                            <input type="text" name="web_domain_preferences"
-                                placeholder="Ej: miempresa.com o opciones...">
-                        </div>
+                        <fieldset class="form-fieldset">
+                            <legend>Datos Técnicos & Dominio</legend>
+                            <div class="form-group">
+                                <label>¿Qué nombre de dominio deseas? <span class="info-icon"
+                                        data-tooltip="Es la dirección de tu web. Ej: misuñas.com. Si ya lo tienes, ponlo; si no, pon 3 opciones.">ℹ️</span></label>
+                                <input type="text" name="web_domain_preferences"
+                                    placeholder="Opción 1, Opción 2, Opción 3...">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Ya tienes contratado el Hosting? <span class="info-icon"
+                                        data-tooltip="Es el espacio digital donde se guardan tus fotos y textos. Si no tienes, nosotros lo gestionamos.">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="web_hosting_status">
+                                        <option value="No, gestionenlo ustedes">No, gestiónenlo ustedes</option>
+                                        <option value="Sí, ya tengo">Sí, ya tengo</option>
+                                        <option value="No estoy seguro">No estoy seguro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>¿En qué idiomas estará la web? <span class="info-icon"
+                                        data-tooltip="¿Solo español o también inglés para el público extranjero?">ℹ️</span></label>
+                                <input type="text" name="web_languages" placeholder="Ej: Español e Inglés">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Para cuándo necesitas que la web esté al aire? <span class="info-icon"
+                                        data-tooltip="Los proyectos urgentes pueden tener un recargo de prioridad.">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="web_deadline">
+                                        <option value="Urgente">Urgente</option>
+                                        <option value="1 Mes">1 Mes</option>
+                                        <option value="Sin apuro">Sin apuro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Presupuesto estimado para la web <span class="info-icon"
+                                        data-tooltip="Esto nos ayuda a no ofrecerte un Ferrari si buscas un buen auto utilitario, o viceversa.">ℹ️</span></label>
+                                <input type="text" name="web_budget" placeholder="Ej: $500 - $1000">
+                            </div>
+                        </fieldset>
 
-                        <div class="form-group">
-                            <label>¿Qué herramientas necesitas en la web? <span class="info-icon"
-                                    data-tooltip="Esto nos ayuda a elegir la mejor tecnología para tu web.">ℹ️</span></label>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Citas/Reservas"
-                                        style="width: auto; margin: 0;"> Citas/Reservas
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Venta Online"
-                                        style="width: auto; margin: 0;"> Venta Online
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Solo Info"
-                                        style="width: auto; margin: 0;"> Solo Info
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Blog"
-                                        style="width: auto; margin: 0;"> Blog
+                        <fieldset class="form-fieldset">
+                            <legend>Estrategia & Mercado</legend>
+                            <div class="form-group">
+                                <label>¿Cuál es el objetivo #1 de la web? <span class="info-icon"
+                                        data-tooltip="Ej: Vender productos, que la gente agende citas, o solo dar información y ganar prestigio.">ℹ️</span></label>
+                                <input type="text" name="web_goal_primary" placeholder="Ej: Agendar Citas">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Quién es tu cliente ideal? <span class="info-icon"
+                                        data-tooltip="Edad, qué le gusta, cómo habla. Esto define si el diseño debe ser serio, juvenil, de lujo, etc.">ℹ️</span></label>
+                                <textarea name="web_target_audience" rows="2"
+                                    placeholder="Describe a tu cliente ideal..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombra 3 competidores a los que quieres superar <span class="info-icon"
+                                        data-tooltip="Analizaremos qué hacen bien para nosotros hacerlo mucho mejor.">ℹ️</span></label>
+                                <textarea name="web_competitors" rows="2" placeholder="Links o nombres..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Menciona 2 páginas web que te gusten mucho <span class="info-icon"
+                                        data-tooltip="No importa si no son de tu rubro, nos ayuda a entender tu gusto visual.">ℹ️</span></label>
+                                <textarea name="web_visual_references" rows="2" placeholder="Links..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Cuál es tu ventaja única? (¿Por qué elegirte a ti?) <span class="info-icon"
+                                        data-tooltip="Este será el título principal que verá la gente al entrar.">ℹ️</span></label>
+                                <textarea name="web_usp" rows="2"
+                                    placeholder="Somos los más rápidos, o los más baratos, o los únicos que..."></textarea>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="form-fieldset">
+                            <legend>Contenido & Estructura</legend>
+                            <div class="form-group">
+                                <label>¿Qué páginas internas necesitas? <span class="info-icon"
+                                        data-tooltip="Ej: Inicio, Nosotros, Servicios, Galería, Contacto, Blog.">ℹ️</span></label>
+                                <input type="text" name="web_pages_list" placeholder="Lista las secciones...">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Tienes los textos redactados? <span class="info-icon"
+                                        data-tooltip="Si no los tienes, podemos ofrecerte el servicio de redacción profesional / Copywriting.">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="web_copywriting_status">
+                                        <option value="Sí, tengo todo">Sí, tengo todo</option>
+                                        <option value="No, necesito ayuda">No, necesito ayuda</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Tienes fotografías profesionales de tu negocio? <span class="info-icon"
+                                        data-tooltip="Una web premium necesita fotos premium. Si no tienes, usamos bancos de imágenes.">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="web_photos_status">
+                                        <option value="Sí, tengo fotos pro">Sí, tengo fotos pro</option>
+                                        <option value="Tengo fotos caseras">Tengo fotos caseras</option>
+                                        <option value="Necesito banco de imágenes">Necesito banco de imágenes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Tienes el Manual de Marca y Logo listo? <span class="info-icon"
+                                        data-tooltip="Para usar tus colores y tipografías exactas.">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="web_brand_manual">
+                                        <option value="Sí, tengo todo">Sí, tengo todo</option>
+                                        <option value="Solo tengo el logo">Solo tengo el logo</option>
+                                        <option value="No tengo nada">No tengo nada</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Sube tus archivos (Logo/Fotos) <span class="info-icon"
+                                        data-tooltip="Sube lo que tengas disponible.">ℹ️</span></label>
+                                <label class="file-upload-wrapper">
+                                    <input type="file" name="web_files" multiple>
+                                    <span>📂 Arrastra o clic aquí</span>
                                 </label>
                             </div>
-                        </div>
+                        </fieldset>
 
-                        <div class="form-group">
-                            <label>Links de 2 competidores a los que quieres superar <span class="info-icon"
-                                    data-tooltip="Queremos ver qué hace tu competencia para hacerlo nosotros mucho mejor.">ℹ️</span></label>
-                            <textarea name="web_referencias" rows="2" placeholder="Pégalos aquí..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Tienes las fotos y textos listos? <span class="info-icon"
-                                    data-tooltip="Si no tienes fotos, podemos incluir un servicio de fotografía o banco de imágenes premium.">ℹ️</span></label>
-                            <div class="select-wrapper">
-                                <select name="web_content_readiness">
-                                    <option value="Tengo todo">Tengo todo</option>
-                                    <option value="Solo fotos">Solo fotos</option>
-                                    <option value="Necesito que me ayuden">Necesito que me ayuden</option>
-                                </select>
+                        <fieldset class="form-fieldset">
+                            <legend>Funcionalidades & Integraciones</legend>
+                            <div class="form-group">
+                                <label>Funcionalidades Clave <span class="info-icon"
+                                        data-tooltip="Selecciona lo que realmente necesitas.">ℹ️</span></label>
+                                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                    <label style="display: flex; align-items: center; gap: 5px; font-size: 14px;">
+                                        <input type="checkbox" name="web_features" value="Citas/Reservas"
+                                            style="width: auto; margin: 0;"> Citas/Reservas ℹ️
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 5px; font-size: 14px;">
+                                        <input type="checkbox" name="web_features" value="Tienda Online"
+                                            style="width: auto; margin: 0;"> Tienda Online ℹ️
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 5px; font-size: 14px;">
+                                        <input type="checkbox" name="web_features" value="Chat/WhatsApp"
+                                            style="width: auto; margin: 0;"> Chat/WhatsApp ℹ️
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 5px; font-size: 14px;">
+                                        <input type="checkbox" name="web_features" value="CRM"
+                                            style="width: auto; margin: 0;"> Conexión CRM ℹ️
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 5px; font-size: 14px;">
+                                        <input type="checkbox" name="web_features" value="Social Feed"
+                                            style="width: auto; margin: 0;"> Feed Redes ℹ️
+                                    </label>
+                                    <label style="display: flex; align-items: center; gap: 5px; font-size: 14px;">
+                                        <input type="checkbox" name="web_features" value="Newsletter"
+                                            style="width: auto; margin: 0;"> Newsletter ℹ️
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Objetivo de la web</label>
-                            <div class="select-wrapper">
-                                <select name="web_goal" id="web_goal">
-                                    <option value="Ventas/Reservas">Ventas/Reservas</option>
-                                    <option value="Branding/Imagen">Branding/Imagen</option>
-                                    <option value="Informativa">Informativa</option>
-                                </select>
+                            <div class="form-group">
+                                <label>Comentarios adicionales</label>
+                                <textarea name="web_comentarios" rows="3" placeholder="Detalles extra..."></textarea>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Redes Sociales actuales</label>
-                            <textarea name="web_socials" id="web_socials" rows="2"
-                                placeholder="Pega tus links aquí"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Sube fotos de tus productos/local</label>
-                            <label class="file-upload-wrapper">
-                                <input type="file" name="web_files" multiple>
-                                <span>📷 Arrastra o clic aquí</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label>Comentarios o ideas adicionales para tu Web</label>
-                            <textarea name="web_comentarios" rows="3"
-                                placeholder="Escribe aquí cualquier detalle extra..."></textarea>
-                        </div>
+                        </fieldset>
                     </div>
 
                     <!-- BIO BLOCK -->
                     <div id="details-bio" class="service-section hidden">
-                        <h3 class="section-title">🔗 Bio Site</h3>
+                        <h3 class="section-title">🔗 Bio Site & Links</h3>
 
-                        <div class="form-group">
-                            <label>¿Cuál es tu número de WhatsApp para clientes? <span class="info-icon"
-                                    data-tooltip="Aquí llegará la gente al dar clic en tu Bio.">ℹ️</span></label>
-                            <input type="text" name="bio_whatsapp" placeholder="+593 99 999 9999" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Cuál es tu objetivo principal? <span class="info-icon"
-                                    data-tooltip="Destacaremos este botón en grande.">ℹ️</span></label>
-                            <div class="select-wrapper">
-                                <select name="bio_main_objective">
-                                    <option value="Agendar Cita">Agendar citas</option>
-                                    <option value="Vender productos">Vender productos</option>
-                                    <option value="Crecer seguidores">Crecer seguidores</option>
-                                </select>
+                        <fieldset class="form-fieldset">
+                            <legend>Acción & Contacto</legend>
+                            <div class="form-group">
+                                <label>¿Cuál es tu "Llamado a la Acción" (CTA) principal? <span class="info-icon"
+                                        data-tooltip="El botón gigante que queremos que toquen. Ej: 'Agendar Cita'.">ℹ️</span></label>
+                                <input type="text" name="bio_cta_main" placeholder="Ej: Agendar Cita">
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label>Número de WhatsApp de contacto directo <span class="info-icon"
+                                        data-tooltip="Se abrirá un chat directo con un mensaje pre-armado.">ℹ️</span></label>
+                                <input type="text" name="bio_whatsapp" placeholder="+593 99 999 9999" required>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Mensaje pre-armado para el WhatsApp? <span class="info-icon"
+                                        data-tooltip="Ej: 'Hola, vi su Bio y quiero info de...'">ℹ️</span></label>
+                                <input type="text" name="bio_wa_message" placeholder="Texto por defecto...">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Quieres mostrar tus horarios de atención? <span class="info-icon"
+                                        data-tooltip="Para que sepan a qué hora escribirte.">ℹ️</span></label>
+                                <input type="text" name="bio_schedule" placeholder="Ej: Lun-Vie 9am-6pm">
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="form-fieldset">
+                            <legend>Redes & Ubicación</legend>
+                            <div class="form-group">
+                                <label>¿Cuáles son tus redes sociales secundarias? <span class="info-icon"
+                                        data-tooltip="Links de TikTok, Facebook, YouTube, LinkedIn para poner iconos.">ℹ️</span></label>
+                                <textarea name="bio_socials_list" rows="2" placeholder="Pega tus links..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Quieres incluir tu ubicación / Google Maps? <span class="info-icon"
+                                        data-tooltip="Muy importante para negocios físicos como el salón de uñas.">ℹ️</span></label>
+                                <input type="text" name="bio_location_link" placeholder="Link de Maps o Dirección">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Linktree o Dominio Propio? <span class="info-icon"
+                                        data-tooltip="¿Quieres que sea links.miempresa.com o un link genérico?">ℹ️</span></label>
+                                <div class="select-wrapper">
+                                    <select name="bio_domain_pref">
+                                        <option value="Dominio Propio (Más Pro)">Dominio Propio (Más Pro)</option>
+                                        <option value="Link Genérico">Link Genérico</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="form-fieldset">
+                            <legend>Contenido & Visual</legend>
+                            <div class="form-group">
+                                <label>¿Prefieres foto de perfil tuya o el logo? <span class="info-icon"
+                                        data-tooltip="Para marcas personales es mejor la foto, para empresas el logo.">ℹ️</span></label>
+                                <label class="file-upload-wrapper">
+                                    <input type="file" name="bio_profile_pic">
+                                    <span>👤 Subir Foto/Logo</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Fondo de la Bio? <span class="info-icon"
+                                        data-tooltip="Color sólido, degradado, foto tuya de fondo o un video corto en bucle.">ℹ️</span></label>
+                                <input type="text" name="bio_bg_pref" placeholder="Ej: Foto oscura de fondo">
+                            </div>
+                            <div class="form-group">
+                                <label>¿Biografía corta (Texto de introducción)? <span class="info-icon"
+                                        data-tooltip="Un párrafo de 2 líneas sobre lo que haces.">ℹ️</span></label>
+                                <textarea name="bio_intro_text" rows="2" placeholder="Hola, somos..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Quieres incluir un Catálogo en PDF o Menú? <span class="info-icon"
+                                        data-tooltip="Podemos poner un botón para descargar tu lista de precios.">ℹ️</span></label>
+                                <label class="checkbox-wrapper"><input type="checkbox" name="bio_feat_catalog"
+                                        value="Sí"> Sí, incluir botón de descarga</label>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Estilo de los botones? <span class="info-icon"
+                                        data-tooltip="Redondeados, cuadrados, con sombra, minimalistas.">ℹ️</span></label>
+                                <input type="text" name="bio_btn_style" placeholder="Ej: Redondeados con borde">
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="form-fieldset">
+                            <legend>Funciones Avanzadas</legend>
+                            <div class="form-group">
+                                <label>Activaciones Especiales <span class="info-icon"
+                                        data-tooltip="Selecciona extras.">ℹ️</span></label>
+                                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                    <label style="font-size: 14px;"><input type="checkbox" name="bio_extras"
+                                            value="Formulario Email"> Captura Email ℹ️</label>
+                                    <label style="font-size: 14px;"><input type="checkbox" name="bio_extras"
+                                            value="Video Embed"> Video YouTube/TikTok ℹ️</label>
+                                    <label style="font-size: 14px;"><input type="checkbox" name="bio_extras"
+                                            value="Spotify"> Música Spotify ℹ️</label>
+                                    <label style="font-size: 14px;"><input type="checkbox" name="bio_extras"
+                                            value="Testimonios"> Testimonios ℹ️</label>
+                                    <label style="font-size: 14px;"><input type="checkbox" name="bio_extras"
+                                            value="Pixel FB"> Pixel Facebook ℹ️</label>
+                                    <label style="font-size: 14px;"><input type="checkbox" name="bio_extras"
+                                            value="Venta Directa"> Venta Producto Único ℹ️</label>
+                                    <label style="font-size: 14px;"><input type="checkbox" name="bio_extras"
+                                            value="QR Print"> QR para Imprimir ℹ️</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>¿Frecuencia de actualización? <span class="info-icon"
+                                        data-tooltip="¿Cambiarás los links todos los días o una vez al año?">ℹ️</span></label>
+                                <input type="text" name="bio_maintenance" placeholder="Ej: Una vez al mes">
+                            </div>
+                        </fieldset>
 
                         <div class="form-group">
-                            <label>¿En qué red social eres más activo?</label>
-                            <div class="select-wrapper">
-                                <select name="bio_active_social">
-                                    <option value="Instagram">Instagram</option>
-                                    <option value="TikTok">TikTok</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Otra">Otra</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>¿Qué enlaces quieres destacar?</label>
-                            <textarea name="bio_links" id="bio_links" rows="3"
-                                placeholder="WhatsApp, Dirección, Catálogo..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Foto de perfil</label>
-                            <label class="file-upload-wrapper">
-                                <input type="file" name="bio_profile_pic">
-                                <span>👤 Arrastra o clic aquí</span>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label>Mensaje especial que quieras que vean al entrar</label>
-                            <textarea name="bio_comentarios" rows="2"
-                                placeholder="Ej: ¡Bienvenidos a mi mundo!"></textarea>
+                            <label>Comentarios extra sobre tu Bio</label>
+                            <textarea name="bio_comentarios" rows="2"></textarea>
                         </div>
                     </div>
                 </div>
