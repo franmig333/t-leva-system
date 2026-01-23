@@ -47,24 +47,38 @@
                 <div class="service-section" style="margin-top: 0; margin-bottom: 2rem; border-top: none;">
                     <h3 class="section-title">👤 Datos de la Empresa</h3>
                     <div class="form-group">
-                        <label>¿Quién está llenando este formulario?</label>
+                        <label>Nombre de tu Empresa/Negocio <span class="info-icon"
+                                data-tooltip="El nombre oficial con el que te conocen tus clientes.">ℹ️</span></label>
+                        <input type="text" name="nombre_negocio" placeholder="Ej: T-Leva Agency" required>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Para cuándo necesitas el proyecto? <span class="info-icon"
+                                data-tooltip="Los proyectos urgentes pueden tener un recargo de prioridad.">ℹ️</span></label>
+                        <div class="select-wrapper">
+                            <select name="project_deadline" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="Urgente">Urgente (Prioridad)</option>
+                                <option value="1-2 Semanas">1-2 Semanas</option>
+                                <option value="1 Mes">1 Mes</option>
+                                <option value="Sin apuro">Sin apuro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>¿Quién llena el formulario?</label>
                         <input type="text" name="nombre_encuestado" placeholder="Tu nombre completo" required>
                     </div>
                     <div class="form-group">
-                        <label>¿Cuál es tu cargo?</label>
+                        <label>Cargo del encuestado</label>
                         <div class="select-wrapper">
                             <select name="cargo_encuestado" required>
-                                <option value="" disabled selected>Selecciona tu cargo</option>
+                                <option value="" disabled selected>Selecciona...</option>
                                 <option value="Dueño/a">Dueño/a</option>
                                 <option value="Gerente">Gerente</option>
                                 <option value="Asistente">Asistente</option>
                                 <option value="Otro">Otro</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Nombre de tu Empresa/Emprendimiento</label>
-                        <input type="text" name="nombre_negocio" placeholder="Ej: T-Leva Agency" required>
                     </div>
                     <div class="form-group">
                         <label>Correo electrónico</label>
@@ -93,58 +107,60 @@
                     <!-- LOGO BLOCK -->
                     <div id="details-logo" class="service-section hidden">
                         <h3 class="section-title">🎨 Personalización de Logo</h3>
+
                         <div class="form-group">
-                            <label>¿Cuál es la misión o vibra de tu negocio? <span class="info-icon"
-                                    data-tooltip="Ejemplo: Somos una marca que transmite paz, somos rebeldes, o somos corporativos y serios.">ℹ️</span></label>
-                            <input type="text" name="logo_mission"
-                                placeholder="Describe la personalidad de tu marca...">
-                        </div>
-                        <div class="form-group">
-                            <label>¿Qué colores odias o NUNCA usarías?</label>
-                            <input type="text" name="logo_hated_colors" placeholder="Ej: No usar Rojo ni Negro...">
-                        </div>
-                        <div class="form-group">
-                            <label>Público Objetivo (¿A quién le vendes?)</label>
-                            <input type="text" name="logo_target_audience"
-                                placeholder="Edad, género, gustos de tu cliente...">
-                        </div>
-                        <div class="form-group">
-                            <label>Personalidad de la marca</label>
+                            <label>¿A qué público te diriges? <span class="info-icon"
+                                    data-tooltip="El diseño cambia mucho si le vendes a adolescentes o a abogados corporativos.">ℹ️</span></label>
                             <div class="select-wrapper">
-                                <select name="logo_personalidad" id="logo_personalidad">
-                                    <option value="Femenina y Delicada">Femenina y Delicada</option>
-                                    <option value="Corporativa y Seria">Corporativa y Seria</option>
-                                    <option value="Moderna y Tech">Moderna y Tech</option>
-                                    <option value="Ecológica/Natural">Ecológica/Natural</option>
+                                <select name="logo_target_audience" required>
+                                    <option value="Jóvenes">Jóvenes</option>
+                                    <option value="Empresas B2B">Empresas B2B</option>
+                                    <option value="Familias">Familias</option>
+                                    <option value="Lujo">Lujo</option>
+                                    <option value="Otro">Otro</option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label>¿Dónde se usará principalmente?</label>
-                            <div class="select-wrapper">
-                                <select name="logo_uso" id="logo_uso">
-                                    <option value="Solo Digital/Redes">Solo Digital/Redes</option>
-                                    <option value="Letreros del Local">Letreros del Local</option>
-                                    <option value="Uniformes y Empaques">Uniformes y Empaques</option>
-                                    <option value="En todo">En todo</option>
-                                </select>
+                            <label>¿Qué vibra quieres transmitir? <span class="info-icon"
+                                    data-tooltip="Ayúdanos a definir la personalidad de tu marca.">ℹ️</span></label>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_vibe" value="Elegante"
+                                        style="width: auto; margin: 0;"> Elegante
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_vibe" value="Divertida"
+                                        style="width: auto; margin: 0;"> Divertida
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_vibe" value="Minimalista"
+                                        style="width: auto; margin: 0;"> Minimalista
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_vibe" value="Ecológica"
+                                        style="width: auto; margin: 0;"> Ecológica
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="logo_vibe" value="Futurista"
+                                        style="width: auto; margin: 0;"> Futurista
+                                </label>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label>¿Qué estilo buscas?</label>
-                            <div class="select-wrapper">
-                                <select name="logo_style" id="logo_style">
-                                    <option value="Minimalista">Minimalista</option>
-                                    <option value="Lujoso">Lujoso</option>
-                                    <option value="Divertido">Divertido</option>
-                                    <option value="Geométrico">Geométrico</option>
-                                </select>
-                            </div>
+                            <label>¿Qué colores te gustan y cuáles ODIAS? <span class="info-icon"
+                                    data-tooltip="Evitaremos perder tiempo usando colores que no van con tus gustos.">ℹ️</span></label>
+                            <textarea name="logo_colors_preferences" rows="2"
+                                placeholder="Ej: Me gusta el azul, ODIO el naranja..."></textarea>
                         </div>
-                        <div class="form-group">
-                            <label>Colores de preferencia</label>
-                            <input type="text" name="logo_colors" id="logo_colors" placeholder="Ej: Azul y Dorado">
-                        </div>
+
                         <div class="form-group">
                             <label>Sube referentes visuales</label>
                             <label class="file-upload-wrapper">
@@ -152,31 +168,7 @@
                                 <span>📂 Arrastra o clic aquí</span>
                             </label>
                         </div>
-                        <div class="form-group">
-                            <label>¿Qué elementos visuales te gustan?</label>
-                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_elementos" value="Solo Tipografía"
-                                        style="width: auto; margin: 0;"> Solo Tipografía
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_elementos" value="Con Ícono/Dibujo"
-                                        style="width: auto; margin: 0;"> Con Ícono/Dibujo
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_elementos" value="Letras Entrelazadas"
-                                        style="width: auto; margin: 0;"> Letras Entrelazadas
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="logo_elementos" value="Geométrico"
-                                        style="width: auto; margin: 0;"> Geométrico
-                                </label>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <label>Cuéntanos la historia de tu marca o ideas adicionales</label>
                             <textarea name="logo_comentarios" rows="3"
@@ -189,89 +181,64 @@
                         <h3 class="section-title">🌐 Detalles Web</h3>
 
                         <div class="form-group">
-                            <label>¿Tienes Dominio y Hosting? <span class="info-icon"
-                                    data-tooltip="Dominio es tu nombre en internet (ej: t-leva.com). Hosting es el espacio digital donde se guardan tus fotos.">ℹ️</span></label>
-                            <div class="select-wrapper">
-                                <select name="web_hosting_status">
-                                    <option value="Si tengo todo">Sí, tengo todo</option>
-                                    <option value="Solo Dominio">Solo tengo Dominio</option>
-                                    <option value="No, necesito asesoria">No, necesito asesoría</option>
-                                </select>
-                            </div>
+                            <label>¿Qué nombre de Dominio deseas? (MUY IMPORTANTE) <span class="info-icon"
+                                    data-tooltip="Es la dirección de tu web (ej: www.miempresa.com). Si ya tienes uno, ponlo aquí. Si no, pon 2 opciones que te gusten.">ℹ️</span></label>
+                            <input type="text" name="web_domain_preferences"
+                                placeholder="Ej: miempresa.com o opciones...">
                         </div>
 
                         <div class="form-group">
-                            <label>Si NO tienes dominio, escribe 2 o 3 opciones que te gustarían</label>
-                            <input type="text" name="web_domain_ideas" placeholder="Ej: misuñas.com, uñas-miami.com...">
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Qué plazo de entrega tienes en mente?</label>
-                            <div class="select-wrapper">
-                                <select name="web_deadline">
-                                    <option value="Lo más pronto posible">Lo más pronto posible</option>
-                                    <option value="En 15 días">En 15 días</option>
-                                    <option value="En 1 mes">En 1 mes</option>
-                                    <option value="Sin apuro">Sin apuro</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Cuántas páginas/secciones imaginas?</label>
-                            <input type="text" name="web_pages_count"
-                                placeholder="Ej: Inicio, Nosotros, Servicios, Contacto (4)">
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Tienes el texto y las fotos listas?</label>
-                            <div class="select-wrapper">
-                                <select name="web_content_readiness">
-                                    <option value="Todo listo">Todo listo</option>
-                                    <option value="Tengo fotos pero no textos">Tengo fotos pero no textos</option>
-                                    <option value="Necesito que me ayuden con todo">Necesito que me ayuden con todo
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>¿Qué funcionalidades especiales necesitas?</label>
+                            <label>¿Qué herramientas necesitas en la web? <span class="info-icon"
+                                    data-tooltip="Esto nos ayuda a elegir la mejor tecnología para tu web.">ℹ️</span></label>
                             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                                 <label
                                     style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Reservas/Citas"
-                                        style="width: auto; margin: 0;"> Reservas/Citas
+                                    <input type="checkbox" name="web_funcionalidades" value="Citas/Reservas"
+                                        style="width: auto; margin: 0;"> Citas/Reservas
                                 </label>
                                 <label
                                     style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Tienda Online"
-                                        style="width: auto; margin: 0;"> Tienda Online
+                                    <input type="checkbox" name="web_funcionalidades" value="Venta Online"
+                                        style="width: auto; margin: 0;"> Venta Online
                                 </label>
                                 <label
                                     style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Botón de WhatsApp"
-                                        style="width: auto; margin: 0;"> Botón de WhatsApp
+                                    <input type="checkbox" name="web_funcionalidades" value="Solo Info"
+                                        style="width: auto; margin: 0;"> Solo Info
                                 </label>
                                 <label
                                     style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
-                                    <input type="checkbox" name="web_funcionalidades" value="Formulario de Contacto"
-                                        style="width: auto; margin: 0;"> Formulario de Contacto
+                                    <input type="checkbox" name="web_funcionalidades" value="Blog"
+                                        style="width: auto; margin: 0;"> Blog
                                 </label>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label>Nombra 2 competidores a los que quieres superar</label>
-                            <input type="text" name="web_referencias"
-                                placeholder="Nombres o Links de tu competencia...">
+                            <label>Links de 2 competidores a los que quieres superar <span class="info-icon"
+                                    data-tooltip="Queremos ver qué hace tu competencia para hacerlo nosotros mucho mejor.">ℹ️</span></label>
+                            <textarea name="web_referencias" rows="2" placeholder="Pégalos aquí..."></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label>¿Tienes las fotos y textos listos? <span class="info-icon"
+                                    data-tooltip="Si no tienes fotos, podemos incluir un servicio de fotografía o banco de imágenes premium.">ℹ️</span></label>
+                            <div class="select-wrapper">
+                                <select name="web_content_readiness">
+                                    <option value="Tengo todo">Tengo todo</option>
+                                    <option value="Solo fotos">Solo fotos</option>
+                                    <option value="Necesito que me ayuden">Necesito que me ayuden</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label>Objetivo de la web</label>
                             <div class="select-wrapper">
                                 <select name="web_goal" id="web_goal">
-                                    <option value="Reservas/Citas">Reservas/Citas</option>
-                                    <option value="Ventas Online">Ventas Online</option>
-                                    <option value="Solo Información">Solo Información</option>
+                                    <option value="Ventas/Reservas">Ventas/Reservas</option>
+                                    <option value="Branding/Imagen">Branding/Imagen</option>
+                                    <option value="Informativa">Informativa</option>
                                 </select>
                             </div>
                         </div>
@@ -297,16 +264,25 @@
                     <!-- BIO BLOCK -->
                     <div id="details-bio" class="service-section hidden">
                         <h3 class="section-title">🔗 Bio Site</h3>
+
                         <div class="form-group">
-                            <label>¿Cuál es el botón principal?</label>
+                            <label>¿Cuál es tu número de WhatsApp para clientes? <span class="info-icon"
+                                    data-tooltip="Aquí llegará la gente al dar clic en tu Bio.">ℹ️</span></label>
+                            <input type="text" name="bio_whatsapp" placeholder="+593 99 999 9999" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>¿Cuál es tu objetivo principal? <span class="info-icon"
+                                    data-tooltip="Destacaremos este botón en grande.">ℹ️</span></label>
                             <div class="select-wrapper">
-                                <select name="bio_cta">
-                                    <option value="Agendar Cita">Agendar Cita</option>
-                                    <option value="Ver Catálogo">Ver Catálogo</option>
-                                    <option value="Contacto directo">Contacto directo</option>
+                                <select name="bio_main_objective">
+                                    <option value="Agendar Cita">Agendar citas</option>
+                                    <option value="Vender productos">Vender productos</option>
+                                    <option value="Crecer seguidores">Crecer seguidores</option>
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label>¿En qué red social eres más activo?</label>
                             <div class="select-wrapper">
