@@ -689,35 +689,26 @@
         }
 
         function updateConditionals() {
-            // Logo
-            const logoSection = document.getElementById('details-logo');
-            if (selectedServices.has('Logo')) {
-                logoSection.classList.remove('hidden');
-                document.getElementById('logo_colors').required = true;
-            } else {
-                logoSection.classList.add('hidden');
-                document.getElementById('logo_colors').required = false;
-            }
+            // Helper function to safely toggle visibility
+            const toggleSection = (sectionId, isVisible) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    if (isVisible) {
+                        section.classList.remove('hidden');
+                        // Enable all inputs inside to ensure they are submitted
+                        section.querySelectorAll('input, select, textarea').forEach(el => el.disabled = false);
+                    } else {
+                        section.classList.add('hidden');
+                        // Disable inputs inside so they don't block validation or send empty data for unselected services
+                        section.querySelectorAll('input, select, textarea').forEach(el => el.disabled = true);
+                    }
+                }
+            };
 
-            // Web
-            const webSection = document.getElementById('details-web');
-            if (selectedServices.has('Web')) {
-                webSection.classList.remove('hidden');
-                document.getElementById('web_socials').required = true;
-            } else {
-                webSection.classList.add('hidden');
-                document.getElementById('web_socials').required = false;
-            }
-
-            // Bio
-            const bioSection = document.getElementById('details-bio');
-            if (selectedServices.has('Bio')) {
-                bioSection.classList.remove('hidden');
-                document.getElementById('bio_links').required = true;
-            } else {
-                bioSection.classList.add('hidden');
-                document.getElementById('bio_links').required = false;
-            }
+            // Apply logic for each service
+            toggleSection('details-logo', selectedServices.has('Logo'));
+            toggleSection('details-web', selectedServices.has('Web'));
+            toggleSection('details-bio', selectedServices.has('Bio'));
         }
 
         window.nextStep = function () {
