@@ -8,105 +8,163 @@
 
   <style type="text/css">
     /* Import Corporate Font */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-    /* --- BASE DEL MODO OSCURO --- */
+    /* --- SOFT DARK THEME BASE --- */
     body,
     #nc-root {
       font-family: 'Inter', sans-serif !important;
-      background-color: #000000 !important;
-      /* Fondo principal negro puro */
-      color: #dfe6e9 !important;
-      /* Texto base casi blanco */
+      background-color: #181a1b !important;
+      /* Soft Dark Carbon */
+      color: #9aa0a6 !important;
+      /* Soft Gray Text */
     }
 
-    /* --- ARREGLO DE TÍTULOS Y CABECERAS (CRÍTICO) --- */
-    /* Cabeceras principales de colección */
-    [class*="CollectionHeader"],
-    [class*="AppHeader"] {
-      background-color: #2d3436 !important;
-      border-bottom: 2px solid #6c5ce7 !important;
+    /* --- CABECERAS & HEADER --- */
+    [class*="AppHeader"],
+    [class*="CollectionHeader"] {
+      background-color: #242729 !important;
+      /* Cards Background */
+      border-bottom: 1px solid #3c4043 !important;
+      color: #e8eaed !important;
     }
 
-    [class*="CollectionHeader"] h1,
-    [class*="AppHeader"] h1,
-    [class*="CollectionHeader"] span {
-      color: #ffffff !important;
-      /* Títulos principales BLANCOS */
-    }
-
-    /* Barras de título de sección (ej: "LOGO DE LA EMPRESA") */
-    [class*="ObjectWidgetTopBar"],
-    [class*="EditorControlGroupHeader"] {
-      background-color: #6c5ce7 !important;
-      /* Fondo morado corporativo */
-      color: #ffffff !important;
-      /* Texto BLANCO */
-      border: none !important;
-      border-radius: 8px 8px 0 0 !important;
-    }
-
-    /* --- ARREGLO DE ETIQUETAS (LABELS) --- */
-    label,
-    [class*="WidgetLabel"],
-    [class*="ControlLabel"] {
-      color: #ffffff !important;
-      /* Etiquetas BLANCAS y legibles */
+    h1,
+    h2,
+    h3,
+    [class*="CollectionHeader"] h1 {
+      color: #e8eaed !important;
+      /* Soft White Titles */
       font-weight: 600 !important;
-      font-size: 14px !important;
-      margin-bottom: 8px !important;
     }
 
-    /* --- LIMPIEZA DE INPUTS Y CAMPOS --- */
+    /* --- CARDS & PANELS --- */
+    [class*="Card"],
+    [class*="ListCard"],
+    [class*="EntryCard"] {
+      background-color: #242729 !important;
+      border-radius: 8px !important;
+      border: 1px solid #3c4043 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* --- INPUTS & CONTROLS --- */
     input,
     textarea,
     select,
+    [class*="Control"] input,
     div[role="textbox"] {
-      background-color: #2d3436 !important;
-      /* Fondo de input oscuro */
-      color: #ffffff !important;
-      /* Texto que escribes BLANCO */
-      border: 1px solid #636e72 !important;
-      border-radius: 6px !important;
+      background-color: #181a1b !important;
+      border: 1px solid #3c4043 !important;
+      border-radius: 8px !important;
+      color: #e8eaed !important;
+      padding: 15px !important;
+      /* BREATHE SPACE */
+      font-size: 15px !important;
+      box-shadow: none !important;
+    }
+
+    /* Focus states */
+    input:focus,
+    textarea:focus,
+    select:focus,
+    div[role="textbox"]:focus {
+      border-color: #8e7dff !important;
+      box-shadow: 0 0 0 2px rgba(142, 125, 255, 0.2) !important;
+    }
+
+    /* Labels */
+    label,
+    [class*="ControlLabel"] {
+      color: #e8eaed !important;
+      font-weight: 500 !important;
+      font-size: 14px !important;
+      margin-bottom: 10px !important;
+    }
+
+    /* --- SIDEBAR CLEANUP --- */
+    [class*="Sidebar"] {
+      background-color: #242729 !important;
+      border-right: 1px solid #3c4043 !important;
+    }
+
+    [class*="SidebarNavLink"] {
+      color: #9aa0a6 !important;
+      border-radius: 8px !important;
+      margin: 5px 10px !important;
       padding: 10px !important;
     }
 
-    /* Eliminar cajas de fondo blancas residuales */
-    [class*="EditorControl"] {
-      background-color: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      margin-bottom: 24px !important;
+    [class*="SidebarNavLink"]:hover {
+      background-color: #3c4043 !important;
+      color: #e8eaed !important;
     }
 
-    /* Contenedores de objetos */
-    [class*="ObjectWidget"] {
-      border: 1px solid #636e72 !important;
+    [class*="SidebarNavLink"].active {
+      background-color: rgba(142, 125, 255, 0.1) !important;
+      color: #8e7dff !important;
+      font-weight: 600 !important;
+      border-left: 3px solid #8e7dff !important;
+    }
+
+    /* --- BOTONES PREMIUM --- */
+    button,
+    [class*="Button"] {
       border-radius: 8px !important;
-      padding: 0 !important;
-      /* El padding lo da la barra superior */
-      overflow: hidden;
+      font-weight: 600 !important;
+      transition: all 0.2s ease !important;
+      text-transform: none !important;
     }
 
-    /* --- BOTÓN "VOLVER" --- */
+    /* Primary Button */
+    button[class*="Primary"],
+    .details-heading button {
+      background-color: #8e7dff !important;
+      border: none !important;
+      color: white !important;
+    }
+
+    button[class*="Primary"]:hover {
+      background-color: #7b6add !important;
+      transform: translateY(-1px);
+    }
+
+    /* Delete/Remove Buttons */
+    button[class*="Remove"],
+    [class*="Delete"] {
+      color: #ff6b6b !important;
+      background-color: rgba(255, 107, 107, 0.1) !important;
+    }
+
+    /* Lists Top Bars */
+    [class*="ObjectWidgetTopBar"] {
+      background-color: #242729 !important;
+      border-bottom: 1px solid #3c4043 !important;
+      border-radius: 8px 8px 0 0 !important;
+      color: #8e7dff !important;
+    }
+
+    /* --- BACK BUTTON FIXED --- */
     .back-btn-fixed {
       position: fixed;
       top: 15px;
       right: 20px;
       z-index: 99999;
-      background: #2d3436;
-      border: 2px solid #6c5ce7;
-      color: white;
-      padding: 8px 16px;
+      background: #242729;
+      border: 1px solid #3c4043;
+      color: #e8eaed;
+      padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
     }
 
     .back-btn-fixed:hover {
-      background: #6c5ce7;
+      background: #8e7dff;
+      color: white;
+      border-color: #8e7dff;
       transform: translateY(-2px);
     }
   </style>

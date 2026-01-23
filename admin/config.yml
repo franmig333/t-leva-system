@@ -44,10 +44,29 @@ collections:
             fields:
               - { label: "Nombre del Servicio", name: "name", widget: "string" }
               - { label: "ID (único)", name: "id", widget: "string" }
-          - label: "Preguntas del Formulario"
-            name: "questions"
+          - label: "Preguntas: Sección Web"
+            name: "preguntas_web"
             widget: "list"
             fields:
-              - { label: "Texto de la Pregunta", name: "label", widget: "string" }
-              - { label: "Nombre del Campo (name)", name: "name", widget: "string" }
-              - { label: "Tipo de Input", name: "type", widget: "select", options: ["text", "textarea", "email", "number"] }
+              - { label: "Pregunta (Label)", name: "label", widget: "string" }
+              - { label: "Tooltip de Ayuda (ℹ️)", name: "tooltip", widget: "string", required: false }
+              - { label: "Tipo de Input", name: "type", widget: "select", options: ["text", "textarea", "number", "email", "select", "checkbox", "file"], default: "text" }
+              - { label: "Opciones (Solo para Select/Checkbox)", name: "options", widget: "list", required: false, field: { label: "Opción", name: "opt", widget: "string" } }
+
+          - label: "Preguntas: Sección Logo"
+            name: "preguntas_logo"
+            widget: "list"
+            fields:
+              - { label: "Pregunta (Label)", name: "label", widget: "string" }
+              - { label: "Tooltip de Ayuda (ℹ️)", name: "tooltip", widget: "string", required: false }
+              - { label: "Tipo de Input", name: "type", widget: "select", options: ["text", "textarea", "number", "email", "select", "checkbox", "file"], default: "text" }
+              - { label: "Opciones (Solo para Select/Checkbox)", name: "options", widget: "list", required: false, field: { label: "Opción", name: "opt", widget: "string" } }
+
+          - label: "Preguntas: Sección Bio"
+            name: "preguntas_bio"
+            widget: "list"
+            fields:
+              - { label: "Pregunta (Label)", name: "label", widget: "string" }
+              - { label: "Tooltip de Ayuda (ℹ️)", name: "tooltip", widget: "string", required: false }
+              - { label: "Tipo de Input", name: "type", widget: "select", options: ["text", "textarea", "number", "email", "select", "checkbox", "file"], default: "text" }
+              - { label: "Opciones (Solo para Select/Checkbox)", name: "options", widget: "list", required: false, field: { label: "Opción", name: "opt", widget: "string" } }
