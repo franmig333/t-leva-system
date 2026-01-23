@@ -1,8 +1,5 @@
 {
   "logo_imagen": "/images/logo.png",
-  "title": "Inicia tu Proyecto",
-  "subtitle": "Selecciona los servicios que necesitas",
-  "mostrar_galeria": true,
   "portafolio": [],
   "apariencia": {
     "color_fondo_admin": "#000000",
@@ -10,23 +7,6 @@
     "color_primario": "#6c5ce7",
     "color_texto": "#ffffff"
   },
-  "contacto": {
-    "whatsapp_number": "593984083776"
-  },
-  "services": [
-    {
-      "name": "Web",
-      "id": "web"
-    },
-    {
-      "name": "Logo",
-      "id": "logo"
-    },
-    {
-      "name": "Bio",
-      "id": "bio"
-    }
-  ],
   "questions": [
     {
       "label": "¿Cómo se llama tu empresa?",
@@ -42,6 +22,26 @@
       "label": "¿Correo de contacto?",
       "type": "email",
       "name": "email"
+    }
+  ],
+  "contacto": {
+    "whatsapp_number": "593984083776"
+  },
+  "subtitle": "Selecciona los servicios que necesitas",
+  "mostrar_galeria": false,
+  "title": "Inicia tu Proyecto",
+  "services": [
+    {
+      "name": "Web",
+      "id": "web"
+    },
+    {
+      "name": "Logo",
+      "id": "logo"
+    },
+    {
+      "name": "Bio",
+      "id": "bio"
     }
   ]
 }
