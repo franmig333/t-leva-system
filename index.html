@@ -54,6 +54,28 @@
                     <div id="details-logo" class="service-section hidden">
                         <h3 class="section-title">🎨 Personalización de Logo</h3>
                         <div class="form-group">
+                            <label>Personalidad de la marca</label>
+                            <div class="select-wrapper">
+                                <select name="logo_personalidad" id="logo_personalidad">
+                                    <option value="Femenina y Delicada">Femenina y Delicada</option>
+                                    <option value="Corporativa y Seria">Corporativa y Seria</option>
+                                    <option value="Moderna y Tech">Moderna y Tech</option>
+                                    <option value="Ecológica/Natural">Ecológica/Natural</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>¿Dónde se usará principalmente?</label>
+                            <div class="select-wrapper">
+                                <select name="logo_uso" id="logo_uso">
+                                    <option value="Solo Digital/Redes">Solo Digital/Redes</option>
+                                    <option value="Letreros del Local">Letreros del Local</option>
+                                    <option value="Uniformes y Empaques">Uniformes y Empaques</option>
+                                    <option value="En todo">En todo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>¿Qué estilo buscas?</label>
                             <div class="select-wrapper">
                                 <select name="logo_style" id="logo_style">
@@ -80,6 +102,39 @@
                     <!-- WEB BLOCK -->
                     <div id="details-web" class="service-section hidden">
                         <h3 class="section-title">🌐 Detalles Web</h3>
+                        <div class="form-group">
+                            <label>¿Qué funcionalidades especiales necesitas?</label>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="web_funcionalidades" value="Reservas/Citas"
+                                        style="width: auto; margin: 0;"> Reservas/Citas
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="web_funcionalidades" value="Tienda Online"
+                                        style="width: auto; margin: 0;"> Tienda Online
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="web_funcionalidades" value="Botón de WhatsApp"
+                                        style="width: auto; margin: 0;"> Botón de WhatsApp
+                                </label>
+                                <label
+                                    style="display: flex; align-items: center; gap: 5px; font-weight: normal; font-size: 14px;">
+                                    <input type="checkbox" name="web_funcionalidades" value="Formulario de Contacto"
+                                        style="width: auto; margin: 0;"> Formulario de Contacto
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Links de Competencia o Referencia</label>
+                            <input type="text" name="web_referencias" placeholder="¿Qué web te gusta? Pega links aquí">
+                        </div>
+                        <div class="form-group">
+                            <label>¿Quién es tu cliente ideal?</label>
+                            <input type="text" name="web_cliente_ideal" placeholder="Ej: Jóvenes de 18-25 años...">
+                        </div>
                         <div class="form-group">
                             <label>¿Tienes dominio comprado?</label>
                             <div class="select-wrapper">
@@ -116,6 +171,16 @@
                     <!-- BIO BLOCK -->
                     <div id="details-bio" class="service-section hidden">
                         <h3 class="section-title">🔗 Bio Site</h3>
+                        <div class="form-group">
+                            <label>¿Cuál es el botón principal?</label>
+                            <div class="select-wrapper">
+                                <select name="bio_cta">
+                                    <option value="Agendar Cita">Agendar Cita</option>
+                                    <option value="Ver Catálogo">Ver Catálogo</option>
+                                    <option value="Contacto directo">Contacto directo</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label>¿Qué enlaces quieres destacar?</label>
                             <textarea name="bio_links" id="bio_links" rows="3"
